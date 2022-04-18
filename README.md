@@ -1,2 +1,3 @@
-# latex_workshop
-A repository for LaTeX resources for linguists
+# LaTeX for Linguists
+
+This is a repository for LaTeX related resources for linguists.
