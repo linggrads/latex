@@ -1,0 +1,565 @@
+\documentclass[aspectratio=149]{beamer}
+\usetheme[progressbar=frametitle]{metropolis} % Use metropolis theme
+\usepackage{appendixnumberbeamer} % For backup slides in appendix
+\usepackage{expex}
+\usepackage{multicol}
+\usepackage[linguistics]{forest}
+\usepackage[backend=biber,natbib=true,useprefix=true,style=authoryear,maxcitenames=2]{biblatex}
+\addbibresource{bibliography.bib}
+
+\resetcountonoverlays{excnt} % Make expex play well with overlays
+\lingset{everygla={},aboveglftskip=-0.5ex,exskip=1ex,Everyex={\parskip=0pt},numoffset=0em,textoffset=.75em}
+
+\setbeamertemplate{bibliography item}[text] % no icons in front of bibliography
+\renewcommand*{\bibfont}{\scriptsize}
+
+%TODO not sure this does anything for the slides I have
+\setlength\columnsep{7pt} % default columnsep is 10pt
+
+
+\title{Implications of the Danish definiteness alternation for concord in Nanosyntax}
+\date{SinFonIJA 14, 24 September 2021}
+\author{Hayley Ross}
+\institute{Harvard University}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\begin{frame}{Nanosyntax: general claims   {\hfill\footnotesize\citep{baunaz2018nanosyntax}}}
+\begin{itemize}
+\item There is a universal merge order of functional features, and a succinct universal algorithm for how they merge
+%\item These features are packaged into language-specific lexical entries
+\item Lexical entries spell out entire phrases (trees of features)
+\item Language variation derives from the availability of lexical entries
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Nanosyntax: prefixes, suffixes and concord}
+\begin{itemize}
+\item Suffixes are default, prefixes are a ``last resort'' \citep{starke2018complex}
+%; \citet{caha2019case} limits them to single morphemes by default \citep{caha2019case}
+\item Disagreement
+on limits to prefix construction / workspace closure \\
+%\begin{itemize}
+%\item Immediate workspace closure \citep{caha2019case}; late closure \citep{starke2018complex}; allow single morphemes \citep{caha2019fine}
+%\end{itemize}
+\citep{caha2019case, starke2018complex, caha2019fine}
+\item Multiple Merge \citep{caha2019case} allows concord (multiple expression of a feature) and multi-morpheme prefixes
+%\item Alternative: agreement by copying arbitrary sets of features \citep{taraldsen2010nanosyntax}
+\end{itemize}
+\end{frame}
+
+\section{Data}
+\begin{frame}{Noun phrases in Danish  {\hfill\footnotesize\citep{hankamer2018structure}}} %\citep{hankamer2018structure}
+\begin{multicols}{2}
+\pex
+\a
+\begingl
+\gla kant-\textbf{en} //
+\glb edge-\textsc{def} //
+\glft `the edge' //
+\endgl \label{ex:kanten}
+\a \ljudge{*}
+\begingl
+\gla  den kant //
+\glb \textsc{def} edge //
+\glft $\approx$ `the edge' //
+\endgl
+\xe
+\pex~
+\a \ljudge{*}
+\begingl
+\gla skarpe kant-en //
+\glb sharp edge-\textsc{def} //
+\glft $\approx$ `the sharp edge' //
+\endgl
+\a
+\begingl
+\gla \textbf{den} skarpe kant //
+\glb \textsc{def} sharp edge //
+\glft `the sharp edge' //
+\endgl \label{ex:den-skarpe-kant}
+\xe
+\end{multicols}
+\end{frame}
+
+%\begin{frame}{Structural allomorphy {\hfill\footnotesize\citep{hankamer2018structure}}}
+%\pex~ Restrictive and non-restrictive relative clauses
+%\a
+%\begingl
+%\gla \textbf{den} \textbf{stol} som jeg sad p\r{a} //
+%\glb \textsc{def} chair that I sat on //
+%\glft `the chair that I sat on' [restrictive only] //
+%\endgl
+%\a
+%\begingl
+%\gla \textbf{stol-en} som jeg sad p\r{a} //
+%\glb chair-\textsc{def} that I sat on //
+%\glft `the chair, which I sat on' [non-restrictive] //
+%\endgl
+%\xe
+%
+%%\citet{hankamer2018structure} take this as evidence that the allomorphy must be structural and not linear
+%\end{frame}
+
+\begin{frame}{Concord}
+% do as tables - one slide with data one slide with agreement
+\begin{multicols}{2}
+\pex~
+\a
+\begingl
+\gla kant-\textbf{en} //
+\glb edge-\textsc{def.sg.c} //
+\glft `the edge' //
+\endgl
+\a
+\begingl
+\gla \textbf{den} skarpe kant //
+\glb \textsc{def.sg.c} sharp edge //
+\glft `the sharp edge' //
+\endgl
+\xe
+\pex~
+\a
+\begingl
+\gla hus-\textbf{et} //
+\glb house-\textsc{def.sg.n} //
+\glft `the house' //
+\endgl \label{ex:huset}
+\a
+\begingl
+\gla \textbf{det} store hus //
+\glb \textsc{def.sg.n} big house //
+\glft `the big house' //
+\endgl \label{ex:det-store-hus}
+\xe
+\end{multicols}
+\end{frame}
+
+\section{Analysis}
+
+\begin{frame}{Multiple Merge {\hfill\footnotesize\citep{caha2019case}}}
+\begin{multicols}{2}
+\ex[exno=\ref{ex:kanten}]
+\begingl
+\gla kant-\textbf{en} \hspace*{5em}//
+\glb edge-\textsc{def} //
+%\glft `the edge' //
+\endgl
+\xe
+\ex[exno=\ref{ex:den-skarpe-kant}]
+\begingl
+\gla \textbf{den} skarpe kant //
+\glb \textsc{def} sharp edge //
+%\glft `the sharp edge' //
+\endgl
+\xe
+\end{multicols}
+
+\begin{columns}[t]
+\hspace*{1.8em}
+
+\column{0.25\textwidth}
+\phantom{``Regular Merge'':}
+
+\scalebox{0.68}{
+\begin{forest}
+[DefP,s sep=1.5em
+	[NP,tikz={\node [draw,ellipse,inner sep=0em,fit to=tree] {};}
+		[$\sqrt{}$\ldots, roof]
+	]{\node at (.south)[below=5em]{\emph{kant}};}
+	[DefP,tikz={\node [draw,ellipse,inner sep=-0.25em,fit to=tree] {};}
+		[\ldots, roof
+			[F]
+		]
+	]{\node at (.south)[below=9em]{\emph{en}};}
+]
+\end{forest}
+}
+
+\column{0.3\textwidth}
+``Regular'' Merge:
+
+\scalebox{0.68}{
+\begin{forest}
+[DefP,s sep=2em
+	[AP,s sep=1.5em
+		[AP,tikz={\node [draw,ellipse,inner sep=0em,fit to=tree] {};}
+			[$\sqrt{}$\ldots, roof]
+		]{\node at (.south)[below=5em]{\emph{skarpe}};}
+		[NP,tikz={\node [draw,ellipse,inner sep=0em,fit to=tree] {};}
+			[$\sqrt{}$\ldots, roof]
+		]{\node at (.south)[below=5em]{\emph{kant}};}
+	]
+	[DefP,tikz={\node [draw,ellipse,inner sep=-0.25em,fit to=tree] {};}
+		[\ldots, roof
+			[F]
+		]
+	]{\node at (.south)[below=9em]{\emph{en}};}
+]
+\end{forest}
+}
+
+\column{0.4\textwidth}
+Multiple Merge:
+
+\scalebox{0.68}{
+\begin{forest}
+[AP,s sep=1.5em
+	[AP,tikz={\node [draw,ellipse,inner sep=-0.25em,fit to=tree] {};}
+		[AP
+			[$\sqrt{}$\ldots, roof]
+		]
+		[DefP,edge=dashed
+			[\ldots, roof]
+		]
+	]{\node at (.south)[below=9em]{\emph{skarpe}};}
+	[DefP,s sep=1.5em
+		[NP,tikz={\node [draw,ellipse,inner sep=0em,fit to=tree] {};}
+			[$\sqrt{}$\ldots, roof]
+		]{\node at (.south)[below=5em]{\emph{kant}};}
+		[DefP,tikz={\node [draw,ellipse,inner sep=-0.25em,fit to=tree] {};}
+			[\ldots, roof
+				[F]
+			]
+		]{\node at (.south)[below=9em]{\emph{en}};}
+	]
+]
+\end{forest}
+}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Definiteness alternation with late workspace closure {\hfill\footnotesize\citep{starke2018complex}}}
+\begin{multicols}{2}
+\ex[exno=\ref{ex:kanten}]
+\begingl
+\gla kant-\textbf{en} \hspace*{5em}//
+\glb edge-\textsc{def} //
+%\glft `the edge' //
+\endgl
+\xe
+\ex[exno=\ref{ex:den-skarpe-kant}]
+\begingl
+\gla \textbf{den} skarpe kant //
+\glb \textsc{def} sharp edge //
+%\glft `the sharp edge' //
+\endgl
+\xe
+\end{multicols}
+\vspace*{-0.5em}
+\begin{columns}[t]
+\hspace*{1.8em}
+
+\column{0.5\textwidth}
+\scalebox{0.7}{
+\begin{forest}
+[D2P,s sep=3.5em
+	[D1P,tikz={\node [draw,ellipse,inner sep=-0.5em,minimum width=9em,minimum height=17em,yshift=-10.25em,xshift=-1.5em,rotate=17] {};}
+		[D1]
+		[\textsc{IndP}
+			[\textsc{Ind}]
+			[\textsc{ClassP}
+				[\textsc{Class}]
+				[NP
+					[$\sqrt{}$\ldots, roof]
+				]
+			]
+		]
+	]{\node at (.south)[below=12.75em]{\emph{kant}};}
+	[D2P,tikz={\node [draw,ellipse,inner sep=-0.25em,fit to=tree] {};}
+		[D2]
+	]{\node at (.south east)[below=4em]{\emph{en}};}
+]
+\end{forest}
+}
+\column{0.5\textwidth}
+\scalebox{0.7}{
+\begin{forest}
+[D2P,s sep=1.2em
+	[D2P,s sep=1.2em
+		[D1P,tikz={\node [draw,ellipse,inner sep=-0.35em,fit to=tree] {};}
+			[D1]
+			[A]
+		]{\node at (.south)[below=9ex]{\emph{d}};}
+		[D2P,tikz={\node [draw,ellipse,inner sep=-0.25em,fit to=tree] {};}
+			[D2]
+		]{\node at (.south)[below=9ex]{\emph{en}};}
+	]
+	[AP
+		[AP,tikz={\node [draw,ellipse,inner sep=-0.25em,fit to=tree] {};}
+			[$\sqrt{}$\ldots, roof]
+		]{\node at (.south)[below=9ex]{\emph{skarpe}};}
+		[\textsc{IndP},tikz={\node [draw,ellipse,inner sep=-0.5em,minimum width=8.5em,minimum height=13em,yshift=-12em,xshift=7.5em,rotate=15] {};}
+			[\textsc{Ind}]
+			[\textsc{ClassP}
+				[\textsc{Class}]
+				[NP
+					[$\sqrt{}$\ldots, roof]
+				]
+			]
+		]{\node at (.south)[below=19.5ex]{\emph{kant}};}
+	]
+]
+\end{forest}
+}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Definite marker concord {\hfill\footnotesize (inspired by \citealp{taraldsen2010nanosyntax})}}
+\begin{multicols}{2}
+\ex[exno=\ref{ex:kanten}]
+\begingl
+\gla kant-\textbf{en} \hspace*{5em}//
+\glb edge-\textsc{def.sg.c} //
+%\glft `the edge' //
+\endgl
+\xe
+\ex[exno=\ref{ex:huset}]
+\begingl
+\gla hus-\textbf{et} //
+\glb house-\textsc{def.sg.n} //
+%\glft `the house' //
+\endgl
+\xe
+\end{multicols}
+\vspace*{-0.75em}
+\begin{columns}[t]
+\hspace*{1.3em}
+
+\column{0.325\textwidth}
+\scalebox{0.61}{
+\begin{forest}
+[D2P,s sep=3.5em
+	[D1P,tikz={\node [draw,ellipse,inner sep=-0.5em,minimum width=9em,minimum height=17em,yshift=-10.25em,xshift=-1.5em,rotate=17] {};}
+		[D1]
+		[\textsc{IndP}
+			[\textsc{Ind}]
+			[\textsc{ClassP}
+				[\textsc{Class}]
+				[NP
+					[$\sqrt{}$\ldots, roof]
+				]
+			]
+		]
+	]{\node at (.south)[below=12.75em]{\emph{kant}};}
+	[D2P,tikz={\node [draw,ellipse,inner sep=-0.25em,fit to=tree] {};}
+		[D2]
+	]{\node at (.south east)[below=4em]{\emph{en}};}
+]
+\end{forest}
+}
+\column{0.675\textwidth}
+\scalebox{0.61}{
+\begin{forest}
+[\textsc{IndP} (\textsc{AgrD}),s sep=1.5em
+	[\textsc{ClassP} (\textsc{AgrD}),s sep=5.5em
+		[\textsc{DefP},tikz={\node [draw,ellipse,inner sep=-0.75em,minimum width=9.5em,minimum height=20.75em,yshift=-15.25em,xshift=-8.5em,rotate=25] {};}
+			[\textsc{Def}]
+			[\textsc{IndP}
+				[\textsc{Ind}]
+				[\textsc{NeutP}
+					[\textsc{Neut}]
+					[\textsc{ClassP}
+						[\textsc{Class}]
+						[NP
+							[$\sqrt{}$\ldots, roof]
+						]
+					]
+				]
+			]
+		]{\node at (.south)[below=12.25em]{\emph{hus}};}
+		[\textsc{ClassP} (\textsc{AgrD}),tikz={\node [draw,ellipse,inner sep=-0.35em,fit to=tree] {};}
+			[\textsc{Class}]
+		]{\node at (.south)[below=9ex]{\emph{e}};}
+	]
+	[\textsc{IndP} (\textsc{AgrD}),tikz={\node [draw,ellipse,inner sep=-0.75em,minimum width=9.5em,minimum height=11em,yshift=-6.5em,xshift=8em, rotate=30] {};}
+		[\textsc{Ind}]
+		[\textsc{NeutP} (\textsc{AgrD})
+			[\textsc{Neut}]
+		]
+	]{\node at (.south)[below=16ex]{\emph{t}};}
+]
+\end{forest}
+}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+\item Danish definiteness presents challenge for Multiple Merge
+\item Analysis possible with older components of Nanosyntax: \citet{taraldsen2010nanosyntax}, \citet{starke2018complex}
+\item Need for hybrid theory and/or refinement of Multiple Merge
+\end{itemize}
+\end{frame}
+
+\begin{frame}{References}
+\nocite{caha2019fine}
+\nocite{hankamer2018structure}
+\printbibliography[heading=none]
+\end{frame}
+
+\appendix
+
+\section{Appendix}
+
+
+\begin{frame}{Structural allomorphy {\hfill\footnotesize\citep{hankamer2018structure}}}
+\pex~ Restrictive and non-restrictive relative clauses
+\a
+\begingl
+\gla \textbf{den} \textbf{stol} som jeg sad p\r{a} //
+\glb \textsc{def} chair that I sat on //
+\glft `the chair that I sat on' [restrictive only] //
+\endgl
+\a
+\begingl
+\gla \textbf{stol-en} som jeg sad p\r{a} //
+\glb chair-\textsc{def} that I sat on //
+\glft `the chair, which I sat on' [non-restrictive] //
+\endgl
+\xe
+
+%\citet{hankamer2018structure} take this as evidence that the allomorphy must be structural and not linear
+\end{frame}
+\begin{frame}{Concord}
+% do as tables - one slide with data one slide with agreement
+\begin{multicols}{2}
+\small
+\pex~
+\a
+\begingl
+\gla kant-\textbf{en} //
+\glb edge-\textsc{def.sg.c} //
+\glft `the edge' //
+\endgl
+\a
+\begingl
+\gla \textbf{den} skarpe kant //
+\glb \textsc{def.sg.c} sharp edge //
+\glft `the sharp edge' //
+\endgl
+\a
+\begingl
+\gla \textbf{en} (skarp) kant //
+\glb \textsc{indef.sg.c} sharp edge //
+\glft `a (sharp) edge' //
+\endgl \label{ex:en-skarp-kant}
+\xe
+\pex~
+\a
+\begingl
+\gla hus-\textbf{et} //
+\glb house-\textsc{def.sg.n} //
+\glft `the house' //
+\endgl %\label{ex:huset}
+\a
+\begingl
+\gla \textbf{det} store hus //
+\glb \textsc{def.sg.n} big house //
+\glft `the big house' //
+\endgl %\label{ex:det-store-hus}
+\a
+\begingl
+\gla \textbf{et} (stor-\textbf{t}) hus //
+\glb \textsc{indef.sg.n} big-\textsc{n} house //
+\glft `a (big) house' //
+\endgl \label{ex:et-stort-hus}
+\xe
+\end{multicols}
+\end{frame}
+
+\begin{frame}{Adjective concord {\hfill\footnotesize (inspired by \citealp{taraldsen2010nanosyntax})}}
+\begin{multicols}{2}
+\ex[exno=\ref{ex:et-stort-hus}]
+\begingl
+\gla et stor-\textbf{t} hus //
+\glb \textsc{indef.sg.n} big-\textsc{n} house //
+%\glft `a (big) house' //
+\endgl
+\xe
+\ex[exno=\ref{ex:den-skarpe-kant}]
+\begingl
+\gla den skarp-\textbf{e} kant //
+\glb \textsc{def.sg.c} sharp edge //
+%\glft `the sharp edge' //
+\endgl
+\xe
+\end{multicols}
+\vspace*{-0.75em}
+\begin{columns}[t]
+
+\column{0.5\textwidth}
+\scalebox{0.59}{
+\begin{forest}
+[\textsc{IndefP},s sep=2em
+	[\textsc{IndefP},tikz={\node [draw,ellipse,inner sep=-0.35em,fit to=tree] {};}
+		[\ldots, roof
+		]{\node at (.180)[left=1.5em]{\emph{et}};}
+	]
+	[\textsc{IndP} (\textsc{AgrA}),s sep=2em
+		[\textsc{IndP} (\textsc{AgrA}),s sep=2em
+			[\textsc{ClassP},tikz={\node [draw,ellipse,inner sep=-0.45em,minimum width=7.25em,minimum height=10em,yshift=-13.75em,xshift=-4.25em] {};}
+				[\textsc{Class}]
+				[AP
+					[$\sqrt{}$\ldots, roof]
+				]
+			]{\node at (.south)[below=15ex]{\emph{stor}};}
+			[\textsc{IndP} (\textsc{AgrA}),tikz={\node [draw,ellipse,inner sep=-0.45em,minimum width=9.25em,minimum height=11em,yshift=-13.5em,xshift=4.75em,rotate=30] {};}
+				[\textsc{Ind}]
+				[\textsc{NeutP} (\textsc{AgrA})
+					[\textsc{Neut}]
+				]
+			]{\node at (.south)[below=14.5ex]{\emph{t}};}
+		]
+		[\textsc{IndP},tikz={\node [draw,ellipse,inner sep=-0.75em,minimum width=8em,minimum height=13em,yshift=-12em,xshift=14em,rotate=20] {};}
+			[\textsc{Ind}]
+			[\textsc{ClassP}
+				[\textsc{Class}]
+				[NP
+					[$\sqrt{}$\ldots, roof]
+				]
+			]
+		]{\node at (.south)[below=19ex]{\emph{hus}};}
+	]
+]
+\end{forest}
+}
+
+\column{0.5\textwidth}
+\scalebox{0.59}{
+\begin{forest}
+[\textsc{IndP (AgrD)},s sep=2.75em
+	[\textsc{IndP (AgrD)},tikz={\node [draw,ellipse,inner sep=-0.35em,fit to=tree] {};}
+		[\ldots, roof
+		]{\node at (.180)[left=2.75em]{\emph{d-en}};}
+	]
+	[\textsc{WAgrAP},s sep=2em
+		[\textsc{WAgrAP},s sep=2em
+			[AP,tikz={\node [draw,ellipse,inner sep=0em,fit to=tree] {};}
+				[$\sqrt{}$\ldots, roof]
+			]{\node at (.south)[below=9ex]{\emph{skarp}};}
+			[\textsc{WAgrAP},tikz={\node [draw,ellipse,inner sep=-0.35em,fit to=tree] {};}
+				[\textsc{WAgrA}]
+			]{\node at (.south)[below=8ex]{\emph{e}};}
+		]
+		[\textsc{IndP},tikz={\node [draw,ellipse,inner sep=-0.5em,minimum width=8.5em,minimum height=13em,yshift=-12em,xshift=11.25em,rotate=15] {};}
+			[\textsc{Ind}]
+			[\textsc{ClassP}
+				[\textsc{Class}]
+				[NP
+					[$\sqrt{}$\ldots, roof]
+				]
+			]
+		]{\node at (.south)[below=20ex]{\emph{kant}};}
+	]
+]
+\end{forest}
+}
+\end{columns}
+\end{frame}
+
+\end{document}

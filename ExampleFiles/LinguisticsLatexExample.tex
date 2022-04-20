@@ -1,0 +1,240 @@
+\documentclass[11pt,letterpaper, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2.5cm,right=2.5cm,top=3.5cm,bottom=2.5cm]{geometry}
+\usepackage{parskip}
+\usepackage{fancyhdr} % Fancy header/footer
+\usepackage{lastpage} % Part of fancy footer
+\usepackage{enumitem} % Fancy enumerated lists
+\usepackage{multicol} % Multiple columns
+\usepackage{amsmath} % Equations
+\usepackage{amssymb} % More equations
+\usepackage[linguistics]{forest} % Trees
+\usepackage{tipa} % IPA
+\usepackage{expex} % Linguistic examples & glosses
+\usepackage{stmaryrd} % Evaluation function brackets
+\usepackage{colortbl} % Shaded cells in tableaux
+\usepackage{setspace} % 1.5 (or other) line spacing
+\onehalfspacing % Remove this if you don't want 1.5 line spacing
+
+% Some custom commands to make trees easier
+\newcommand{\feat}[1]{\ensuremath{\left[ \begin{smallmatrix}\textrm{#1}\end{smallmatrix} \right]}}
+\newcommand{\underfeat}[2]{\ensuremath{\underset{\feat{#2}}{\textrm{#1}}}}
+\newcommand{\pr}{$^\prime$}
+
+% Expex gloss configuration to work with parskip (removes unnecessary whitespace)
+\lingset{everygla={},aboveglftskip=-0.5ex,aboveexskip=1ex,belowexskip=-1ex,Everyex={\parskip=0pt}}
+
+% This bit makes the nice page header and footer
+\pagestyle{fancy}
+\lhead{LING 112} % Change course code here
+\rhead{Hayley Ross, \today} % Put your name here
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+
+\title{Syntactic Theory I\\Assignment 3} % Change the title of the assignment
+\author{Hayley Ross} % And put your name here again
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+I discussed this assignment with...
+
+% Use \section* if you don't want section numbering
+% Use \section if you do
+\section{Examples and Glosses}
+
+Consider the following sentence:
+
+% This uses expex formatting - see http://mirrors.ibiblio.org/CTAN/macros/generic/expex/expex-doc.pdf
+\ex This is a sentence \label{ex:first}
+\xe
+\pex~ % Use the tilde for consecutive examples to get better spacing
+\a \ljudge{*} Sentence a
+\a \ljudge{\#} Sentence b
+\a Sentence c
+\xe
+
+Shiny glosses! I can refer to example (\ref{ex:first}) like this. %Requires you to have put a \label there.
+
+\ex
+\begingl
+\gla Fische, die Fische fischen, fischen Fische, die Fische fischen. //
+\glb fish.{\sc pl.nom/acc} which.{\sc pl.nom/acc} fish.{\sc pl.nom/acc} fish.{\sc 1/3.pl.pres} fish.{\sc 1/3.pl.pres} fish.{\sc pl.nom/acc} which.{\sc pl.nom/acc} fish.{\sc pl.nom/acc} fish.{\sc 1/3.pl.pres} //
+\glft `Fish which fish fish fish fish which fish fish.' //
+\endgl
+\xe
+
+\newpage
+
+\section{Trees}
+
+\singlespacing % Don't use 1.5 line spacing for trees
+\scalebox{0.85}{ % Use a value < 1 here if your tree is too big to fit on the page
+\begin{forest}
+for tree={
+	    l sep=0.2cm, % vertical
+%	    s sep=0.2cm % horizontal
+}
+[CP
+	[C\pr
+		[C
+			[$\varnothing$]
+		]
+		[TP
+			[DP$_j$
+				[D\pr
+					[D[you, name=you]]
+				]
+			]
+			[T\pr
+				[T
+					[\underfeat{T}{\textsc{pres}}[$\varnothing$]]
+					[Mod$_i$[should, name=should]]
+				]
+				[ModP
+					[Mod\pr
+						[$t_i$, name=ti]
+						[vP
+							[$t_j$, name=tj]
+							[v\pr
+								[v
+									[v[$\varnothing$]]
+									[V$_k$[refrain, name=refrain]]
+								]
+								[VP
+									[V\pr
+										[$t_k$, name=tk]
+										[PP
+											[P\pr
+												[P[from]]
+[vP
+	[vP
+		[DP
+			[D\pr
+				[D[$PRO$]]
+			]
+		]
+		[v\pr
+			[v
+				[v[$\varnothing$]]
+				[V$_\ell$[teasing, name=teasing]]
+			]
+			[VP
+				[V\pr
+					[$t_\ell$, name=tl]
+					[DP
+						[D\pr
+							[D[a]]
+							[NP
+								[AdjP
+									[Adj\pr
+										[Adj[nice]]
+									]
+								]
+								[N\pr
+									[N[man]]
+								]
+							]
+						]
+					]
+				]
+			]
+		]
+	]
+	[PP
+		[P\pr
+			[P[like]]
+			[DP
+				[D\pr
+					[D[that]]
+				]
+			]
+		]
+	]
+]
+											]
+										]
+									]
+								]
+							]
+						]
+					]
+				]
+			]
+		]
+	]
+]
+% Name all the nodes that you want to draw arrows from, then use the names here
+\draw[->] (ti) to[out=south, in=south] (should);
+\draw[->] (tj) to[out=south west, in=south] (you);
+\draw[->] (tk) to[out=south, in=south] (refrain);
+\draw[->] (tl) to[out=south, in=south] (teasing);
+\end{forest}
+}
+\onehalfspacing
+
+\section{IPA}
+
+% For a cheatsheet see https://jon.dehdari.org/tutorials/tipachart_mod.pdf
+[\textipa{Neta}]
+
+LANGUAGE, Loniu \\
+%INVENTORY,p,pʷ,t,tʃ,k,s,h,i,u,m,mʷ,n,ɲ,ŋ,e,o,l,ɛ,ɔ,r,a,w,j, \\
+INVENTORY, \textipa{p,p\super w,t,tS,k,s,h,i,u,m,m\super w,n,\textltailn,N,e,o,l,E,O,r,a,w,j} \\
+%PATTERN,Trigger,/a/ → [ɛ] / \underline{\quad}X[o, ɔ] (in nouns) \\
+PATTERN, Trigger, \textipa{/a/ → [E] / \underline{\quad}}X\textipa{[o, O]} (in nouns) \\
+%CLASS,p,t,tʃ,s,l,r,j
+CLASS, \textipa{p,t,tS,s,l,r,j}
+
+\section{Tableaux and Rules}
+
+\begin{tabular}{| r || c | c | c |}
+\hline
+/cat-z/ & Agree & $\textsc{Ident-IO}(\textrm{voice})$ & *\textipa{\r*{\*C}} \\ \hline \hline
+[cats] & & * & \\ \hline
+[cadz] & & * & *!  \\ \hline
+[catz] & *! & \cellcolor{gray!50} * & \cellcolor{gray!50} *  \\ \hline
+[cads] & *! & \cellcolor{gray!50} * & \cellcolor{gray!50} * \\ \hline
+\end{tabular}
+
+\textsc{Vowel Lowering before Uvulars}. Lower high vowels to mid vowels before uvular consonants.
+\[ \begin{bmatrix}
+\mathrm{+syl}
+\end{bmatrix} \rightarrow \begin{bmatrix}
+\mathrm{-high}
+\end{bmatrix} / \underline{\quad} \begin{bmatrix}
+\mathrm{+cons} \\
+\mathrm{+dorsal} \\
+\mathrm{-high}
+\end{bmatrix} \]
+
+
+\section{Semantics}
+
+\textbf{Semantic rule: Exclusive Disjunction}. If $\phi$ and $\psi$ are formulas, then $\llbracket \phi~\mathtt{XOR}~\psi \rrbracket^I = 1$ if either $\llbracket \phi \rrbracket^I = 1$ and $\llbracket \psi \rrbracket^I = 0$, or $\llbracket \phi \rrbracket^I = 0$ and $\llbracket \psi \rrbracket^I = 1$. Otherwise $\llbracket \phi~\mathtt{XOR}~\psi \rrbracket^I = 0$.
+
+Standalone equation:
+\[ \mathrm{male} := \{\langle \textrm{Agnetha, 0} \rangle, \langle \textrm{Bj\"orn, 1} \rangle , \langle \textrm{Benny, 1} \rangle, \langle \textrm{Frida, 0} \rangle\} \]
+
+Truth table:
+
+\begin{tabular}{c | c | c}
+$P$ & $Q$ & $[P \lor Q]$ \\ \hline
+1 & 1 & 1 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+0 & 0 & 0 \\
+\end{tabular}
+
+Multiple aligned equations: % Use the & symbol to separate the "columns", put & before each = to get the = signs nicely lined up
+\begin{align*}
+S_1 &= \{\{\varnothing\}, \{A\}, A\} & S_6 &= \varnothing \\
+S_2 &= A & S_7 &= \{\varnothing\} \\
+S_3 &= \{A\} & S_8 &= \{\{\varnothing\}\} \\
+S_4 &= \{\{A\}\} & S_9 &= \{\varnothing, \{\varnothing\}\} \\
+S_5 &= \{\{A\}, A\} & &
+\end{align*}
+
+\end{document}

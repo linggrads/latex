@@ -1,0 +1,313 @@
+\documentclass[12pt,letterpaper]{article}
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{mathspec}
+\usepackage{microtype}  % Micromanage/optimise spacing
+\usepackage{expex}
+\usepackage{wrapfig}
+\usepackage{multicol}
+\usepackage{graphicx} % Move bullets
+\usepackage{xcolor} % Coloured text
+\usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage[skip=0pt,justification=centering,figurename=Fig.]{caption}
+\usepackage[backend=biber, natbib=true, useprefix=true, style=authoryear, maxcitenames=2, url=false, giveninits=true, uniquename=init, dashed=false, doi=false, isbn=false]{biblatex}
+\addbibresource{crossover-sub-abstract-bibliography.bib}
+\setallmainfonts(Digits,Latin){Times New Roman}
+
+% One-paragraph bibliography environment
+\defbibenvironment{bibliography}
+ {\list
+    {\hspace{0em plus 3em minus 0em}\textbullet \hspace{-1.7em plus 2em minus 0em}
+    }
+    {\setlength{\leftmargin}{0pt}%
+     \setlength{\topsep}{0pt}}%
+     \renewcommand*{\makelabel}[1]{##1}}
+ {\endlist}
+ {\mkbibitem}
+
+% \mkbibitem just prints item label and non-breakable space
+\makeatletter
+\newcommand{\mkbibitem}{\@itemlabel}%\addnbspace}
+\makeatother
+
+% Add breakable space between bibliography items
+\renewcommand*{\finentrypunct}{\space}%\space}
+
+\AtEveryBibitem{
+	\clearlist{publisher}
+	\clearfield{pages}
+	\clearname{editor}
+    \clearfield{note}
+    \clearfield{language}
+    \clearlist{location}
+    \clearfield{month}
+}
+
+\renewbibmacro{in:}{}
+
+\setlength{\parindent}{0pt}  % instead of parskip
+\pagestyle{empty}
+
+\newcommand{\sectitle}[1]{\smallskip \textbf{#1.}}
+
+\newcommand{\secsubtitle}[1]{\smallskip \textit{#1.}}
+
+\lingset{everygla={},aboveglftskip=-0.5ex,exskip=0.5ex,Everyex={\parskip=0pt},
+numoffset=0em,labeloffset=0.25em,textoffset=.25em}
+
+% For wrapfigure
+\setlength\intextsep{0pt}
+%\setlength\textfloatsep{8pt}
+\setlength\columnsep{5pt}
+%\setlength\wrapoverhang{5pt}
+
+% Theresa Guasti textbook on acquisition of proper name + condition C thing
+% the teddy bear is washing him
+% There's plenty of experimental work on strong crossover (mostly processing though)
+
+% Layout of abstract:
+% 1. Strong vs. weak crossover; rules out theories which don't distinguish
+% Second intro: we can  look at controversial cases where one finds contrasting judgemnts and appeal to intuition clearly isn't enough; case in point, proper names.
+% 2. Proper names
+%. Further extensions: quantifiers vs. wh; relative clauses vs. questions; cross-linguistic variation e.g. French relative (Postal 1983) clauses; languages for WCO => we have a reliable experimental methodology
+% -> Don't make the point about extensions until the end; nice that it doesn't prejudge whether solution lies in syntax or semantics, but is accurate enough to tell us about readings and not just broad grammaticality.
+% Conclude that this favours theories that have different mechanisms, or degrees, for strong crossover
+% And justifies Rule I (or something like it) for proper names in strong case, but *unclear* what to do weak crossover; have shown that there's something that needs to be explained
+
+\begin{document}
+
+\begin{center}
+\textbf{Quantifying weak and strong crossover for \emph{wh}-crossover and proper names}
+%Hayley Ross, Gennaro Chierchia, Kathryn Davidson, Harvard University, Cambridge MA
+%\emph{Anonymous submission}
+\end{center}
+\vspace*{-0.5em}
+
+\sectitle{Summary} Strong and weak crossover
+%crossover (sometimes subsumed under Principle C and its derivatives) and weak crossover
+have been studied for decades \citep{postal1971cross}, % \citep{lasnik_condition_2017,safir_weak_2017},
+%TODO do I really need these two citations?
+yet there is little experimental work quantifying the relative severity of these violations. We develop a novel experiment which shows a significant difference in meaning acceptability between strong and weak crossover in English, favouring theories which distinguish the two.
+%(Previous experiments \citep{kush_respecting_2013,kush_looking_2017} only found a difference in processing difficulty.)
+This %flexible
+experimental method also lets us %quantify crossover in 
+address controversial cases of crossover where appeal to intuition has been insufficient, such as cataphora with proper names. We provide quantitative data showing that this displays a similar strong vs. weak crossover effect. More generally, our method provides a way to empirically probe cross-linguistic variation involving crossover phenomena, something which was long overdue.
+%, raising the question of how to account for this distinction theoretically.
+%. The observed strong effect supports accounts such as Rule I \citep{grodzinsky_innateness_1993}, while the difference between the weak and strong effect highlights an open area for theoretical research.
+
+%While strong crossover (often subsumed under Principle C and its derivatives) and weak crossover are at the centre of intense theoretical research \citep{lasnik_condition_2017,safir_weak_2017}, there is little experimental work quantifying the severity of the violation, and no prior work \citep{kush_respecting_2013, kush_looking_2017, felser_sensitivity_2017} disentangles the acceptability of the sentence from the specific crossover interpretation. Further, many potential cases of ``crossover'' within English and cross-linguistically remain under debate. In English, crossover has been suggested to apply to proper names \citep{chomsky_conditions_1976, lasnik_weakest_1991} and to relative clauses \citep{chomsky_concepts_1982, postal_remarks_1993} while not applying to relative clauses in French %TODO cite, or is this in Postal 1993?
+%or, for weak crossover, to matrix clauses in Mandarin \citep{lyu_weak_2017}. We develop two experimental designs to measure the availability of the crossover reading, and apply it to strong, secondary strong and weak \emph{wh}-crossover in English, as well as to proper names. We demonstrate a significant effect of crossover compared to both binding and a coreference (non-bound) reading of the same sentences, and find a significant difference between strong and weak crossover (supporting the original naming in \citealp{wasow_anaphoric_1972}). This provides a well-quantified baseline for experiments on more contentious cases. For proper names, we find that possessive pronouns preceding the name show a similar ``weak crossover'' effect, and conclude that judgements of these readings being truly felicitous \citep{chomsky_conditions_1976} must derive from factors not present in the experiment such as particular focus or information structure.
+
+% Hi Kate - there are two methodology sections, this is just temporary until I figure out a better way to title them
+\sectitle{Methodology} %Pronouns available for binding always have the additional option to corefer with another (overt or accommodated) entity. 
+Classical, standalone binding / crossover sentences may be judged acceptable because binding is possible -- or, because participants accommodate some other referent that the pronoun corefers with. This creates a confound for previous experiments (e.g. \citealt{kush_respecting_2013}) using acceptability judgements. 
+Our design capitalises on this ambiguity by testing two readings (co-indexations) of the same sentence: whether the pronoun corefers with a preceding distractor NP ($j$) or whether it is bound by the \emph{wh}-word ($i$). This disentangles whether it is the structure of the sentence or its reading which causes the crossover violation.
+
+\sectitle{Data (\emph{wh}-crossover)}
+We use a 2x3x2 design which compares the two orders % of the \emph{wh}-gap vs.~the pronoun: 
+\emph{wh}\ldots{}[gap]\ldots{}pronoun (binding, B) and \emph{wh}\ldots{}pronoun\ldots{}[gap] (crossover, CO) %. For each order, we vary whether the \emph{wh}-phrase and pronoun are possessive, 
+across three sentence types corresponding to strong (S), secondary strong (2S) and weak (W) crossover. 
+Each sentence has two readings:
+
+%three pairs of binding (B) and crossover (CO) configurations, each differing only in the order of the \emph{wh}-gap vs.~the pronoun (pro). 
+% The three types correspond to the distinction between 
+%Each target sentence is tested against two possible meanings (co-indexations): :
+
+\ex \label{ex:s-binding}\textit{SB}: The teacher$_j$ wondered which$_i$ of the students \underline{\hspace{0.5em}} enjoyed the essay topic they$_{i/j}$ had chosen.
+\xe
+\ex~ \label{ex:2s-binding}\textit{2SB}: The teacher$_j$ couldn't decide which$_i$ student's poem topic \underline{\hspace{0.5em}} frustrated them$_{i/j}$ the most.
+\xe
+\ex~ \label{ex:w-binding}\textit{WB}: The teacher$_j$ wondered which$_i$ of the students \underline{\hspace{0.5em}} enjoyed their$_{i/j}$ project topic.
+\xe
+\ex~ \label{ex:s-crossover}\textit{SCO}: The teacher$_j$ couldn't remember which$_i$ of the students they$_{i/j}$ said \underline{\hspace{0.5em}} didn't need to hand in the essay.
+\xe
+\ex~ \label{ex:2s-crossover}\textit{2SCO}: The teacher$_j$ couldn't decide which$_i$ student's poem topic they$_{i/j}$ liked  \underline{\hspace{0.5em}} the most.
+\xe
+\ex~ \label{ex:w-crossover}\textit{WCO}: The teacher$_j$ wondered which$_i$ student their$_{i/j}$ project topic frustrated  \underline{\hspace{0.5em}} the most.
+\xe
+
+%The presence of the distractor reading allows us to show that crossover effects are caused precisely by the attempted co-indexation of the \emph{wh}-word and the pronoun, as opposed to general processing difficulties or frequency effects of the sentence. This is a refinement over \citet{kush_respecting_2013, kush_looking_2017}. % which uses sentence acceptability judgements on sentences with no other coreference option. While they found an acceptability difference between binding and crossover, they could not identify an acceptability difference between strong and weak crossover with this method.%, and who did not find an acceptability difference between weak and strong crossover.
+
+We test each configuration in six lexical variants. % with six ``scenarios'' varying lexical items and details of syntax.
+%Each scenario equally supports the distractor and bound readings.
+We also test each item across masculine, feminine and singular \emph{they} pronouns (see \citealp{bjorkman_singular_2017,conrod_pronouns_2019}; i.a.) for a total of 108 test items.
+
+% Kate - I feel like this needs some heading or other to distinguish it from the data; I agree that it needs a better name than methodology
+\sectitle{Response type piloting} We ran a pilot with 200 participants to compare two response types: (A) Present the target sentence and ask participants to rate two side-by-side paraphrases for the distractor NP and bound readings. (B) Present a context supporting one reading, then ask participants to rate the target sentence. Each used a 5-point Likert scale. Results trended in the same direction for both, but the paraphrase task (A) produced crisper results. 
+Below, we present two experiments with the paraphrase task (see Fig. \ref{fig:singular-they-design-paraphrase}); next steps include a full replication %of the full data 
+with the context task (B).
+
+\begin{wrapfigure}{r}{0.48\textwidth}
+\centering
+\includegraphics[width=0.48\textwidth]{plots/configuration_reading_effects_sub_flat_legend.png}
+\caption{Effect of gap/pronoun order}
+\label{fig:exp-1-binding-crossover}
+\end{wrapfigure}
+
+\sectitle{Experiment 1} % We present participants with two side-by-side unambiguous paraphrases corresponding to the distractor and bound readings. We ask them to rate to what degree the target sentence has each meaning on a 5-point Likert scale 
+%This experiment highlights the potential ambiguity of the sentences with the side-by-side presentation and helps reveal relative judgements between the two readings \citep{marty_effect_2020}.
+% Participants were alerted to the possibility of ambiguous sentences during training.
+We recruited 144 self-reported native English speakers using Prolific (8 excluded, $n = 136$). % we excluded 8 due to demographic criteria or failed attention checks (n=136).
+Participants % were divided into 18 Latin square groups and
+saw %one paradigm of target items (6 items, varying scenario and pronoun)
+6 target items corresponding to (\ref{ex:s-binding}-\ref{ex:w-crossover}) %(varying scenario and pronoun) 
+and 6 fillers, in random order.
+
+% \sectitle{Experiment 2} Participants first read a short paragraph describing one reading of the target sentence. They are they asked to rate to what degree the target sentence is a good summary of this paragraph on a 5-point Likert scale (see Fig. \ref{fig:singular-they-design-context}).
+% %TODO drop this sentence probably; try a4paper to see if it fits better
+% %This experiment adapts the classic truth-value judgement task and attempts to prime participants towards a reading.
+% We plan to recruit 96 native English speakers using Prolific. Participants will % be divided into 6 groups in a Latin square design and will
+% see 6 target items %(half a paradigm, varying scenario) plus
+% and 6 fillers.% in a random order.
+
+%\sectitle{Hypothesis} In both experiments, we expect the coreference readings to receive high ratings (indicating acceptability), forming the baseline of the experiment. For the bound reading, binding (\emph{wh}-gap before pronoun) should receive high ratings while crossover (pronoun before \emph{wh}-gap) should receive low ratings. Secondary strong and weak crossover ratings should be improved over strong crossover.
+
+%\clearpage
+
+%\sectitle{Results} %Experiment 1 shows a clear, significant difference between binding and crossover, as well between the coreference and bound readings for crossover sentences. %, showing that these sentences can be processed and understood effectively but co-indexation of the \emph{wh}-word and pronoun is not possible.
+%We further see a statistically significant difference between strong and weak crossover. %, and a trend towards higher ratings for secondary strong vs. strong crossover.
+
+\sectitle{Results (\emph{wh}-crossover)} We fit an ordinal mixed effects model in R using \verb|ordinal| \citep{r_ordinal_2019}
+%\citep{r_2021}
+with an interaction between gap/pronoun order and reading. % (random effects: scenario, participant ID). % Should I mention participant likelihood to notice ambiguity on fillers?
+Fig.~\ref{fig:exp-1-binding-crossover} shows the model's proportions of ratings for each condition. We see little 
+
+\clearpage
+
+\begin{wrapfigure}{r}{0.36\textwidth}
+\centering
+\includegraphics[width=0.36\textwidth]{plots/crossover_strength_effects_sub_flat_legend.png}
+\caption{Strong vs.~weak crossover}
+\label{fig:exp-1-strength}
+\end{wrapfigure}
+
+%We see no significant
+effect of reading alone,
+%($p = 0.14$; Fig. \ref{fig:exp-1-binding-crossover}), 
+but a clear, significant effect of pronoun-before-gap on the bound reading (i.e. crossover vs. binding). %; compare columns 1 and 3).
+%,  which decreases the odds of a high rating by a factor of 0.33 %($SE=1.14$, ($p < 2^{-16}$; Fig. \ref{fig:exp-1-binding-crossover}). %; difference between the 1st and 3rd columns in Figure ).
+We also see a significant positive effect of pronoun-before-gap with the distractor
+reading. % (compare columns 3 and 4).
+%, which increases the odds of a high rating by a factor of 4.61
+%($SE=1.20$,
+%($p < 2^{-16}$; Fig. \ref{fig:exp-1-binding-crossover}).
+%; difference between the 3rd and 4th columns in Figure \ref{fig:exp-1-binding-crossover}).
+This shows that it is the interpretation causing the low ratings, since the sentences are identical.
+We fit a second ordinal mixed effects model on just the bound reading of pronoun-before-gap (crossover) items %, shown in Fig. \ref{fig:exp-1-strength}, 
+to quantify the effect of strong vs.~weak crossover, shown in Fig. \ref{fig:exp-1-strength}. 
+% and notably find a significant effect of strong vs.~weak crossover.
+%We see a trend of improving ratings from strong to secondary strong to weak, but the difference between strong and secondary strong is not significant ($p = 0.30$).
+Notably, this effect is significant; weak crossover roughly doubles the likelihood of a high rating.
+%and increases the odds of a high rating by a factor of 2.19
+%($SE= 1.26$,
+%($p=0.0008$; Fig. \ref{fig:exp-1-strength}). %, contra \citet{kush_respecting_2013} who did not find a difference in acceptability.
+%(The difference between strong and secondary strong is not significant; $p = 0.30$.)
+Finally, results are comparable across pronoun gender, but singular \emph{they} shows the least bias against bound readings compared to the distractor NP.
+
+\sectitle{Data (proper names)} We use a 2x2 design which crosses proper name and pronoun order with strong and weak (possessive) configurations, balanced for pronoun gender. The acceptability of the \emph{his}$_i$ reading in (\ref{ex:w-b-name}) is disputed
+\citep{chomsky_conditions_1976,lasnik_weakest_1991}: %TODO confirm that these citations are correct
+% Reinhart 1983 (paper) has examples of very nested "weak" configurations with proper names which she says are fully grammatical... I think?? It's actually unclear.
+
+\begin{wrapfigure}[3]{r}{0.48\textwidth}
+\centering
+\includegraphics[width=0.48\textwidth]{plots/propername_order_effects_sub_flat_legend.png}
+\caption{Effect of name/pronoun order}
+\label{fig:exp-3-names}
+\end{wrapfigure}
+
+\ex \label{ex:s-l-name} The chef$_j$ knew that Daniel$_i$ was disappointed by the soup he$_{i/j}$ made.
+\xe
+\ex~ \label{ex:w-l-name} The chef$_j$ knew that Daniel$_i$'s soup had disappointed him$_{i/j}$.
+\xe
+\ex~ \label{ex:s-b-name} The chef$_j$ knew that he$_{i/j}$ was disappointed by the soup Daniel$_i$ made.
+\xe
+\ex~ \label{ex:w-b-name} The chef$_j$ knew that his$_{i/j}$ soup had disappointed Daniel$_i$.
+\xe
+
+\sectitle{Experiment 2} We  recruited 48 native English speakers using Prolific (1 excluded, $n=47$). Participants saw 6 target items and 6 fillers. % in a random order.
+
+\begin{wrapfigure}{r}{0.36\textwidth}
+\centering
+\includegraphics[width=0.36\textwidth]{plots/propername_strength_effects_sub_flat_legend.png}
+\caption{Strong vs. weak in names}
+\label{fig:exp-3-strength}
+\end{wrapfigure}
+
+\sectitle{Results (proper names)} We fit an ordinal mixed effects model with an interaction between name/pronoun order and reading, shown in Fig. \ref{fig:exp-3-names}. As above, we see no significant effect of the reading alone 
+%($p=0.08$; ) 
+but a significant effect of pronoun-before-name on the name reading.
+%, which decreases the odds of a high rating by a factor of 0.06 ($p < 2^{-16}$; Fig. \ref{fig:exp-3-names}). 
+We again see a significant effect of pronoun-before-name with the distractor reading, 
+%, which increases the odds of a high rating by a factor of 133.76 ($p < 2^{-16}$; Fig \ref{fig:exp-3-names}).
+showing that only the cataphoric reading is dispreferred. %, but that the sentences are completely acceptable with the distractor reading.
+%Further, the second ordinal mixed effects model on just the name reading of pronoun-before-name shows
+We also see a significant effect of strong vs.~weak, seen in Fig. \ref{fig:exp-3-strength}. % roughly 1.5x the size of the weak/strong crossover effect. 
+% which increases the odds of a high rating by 2.90 ($p = 0.004$; Fig \ref{fig:exp-3-strength}).
+
+\sectitle{Conclusion} We present a novel experimental paradigm to measure strong and weak crossover. We find a significant difference in meaning availability between the two, contra \citet{kush_respecting_2013} who did not find a difference using acceptability judgements. This supports theories which distinguish strong and weak crossover such as \citet{koopman_variables_1982}, \citet{safir_multiple_1984} or \citet{ruys_weak_2000}, % (though the former must still explain why their principle produces a ``weaker'' violation than Condition C) 
+% see Barker (2012)
+%which rely solely on modifications of Condition C. This does not support
+% arguably Ruys (2000) which provides an explanation for WCO and says that it stacks with Condition C to make SCO
+as opposed to unified accounts such as \citet{reinhart_anaphora_1983} or \citet{safir_syntax_2004}. % Arguably Buring, because he extends Reinhart, even though he doesn't mention SCO
+We further find that proper names display a significant crossover effect similar to \emph{wh}-crossover, supporting Rule I \citep{grodzinsky_innateness_1993} and its derivatives. However, this is significantly less severe in weak configurations, suggesting that Rule I is not sufficient in these cases. 
+This leaves an open theoretical question.
+More broadly, we propose a robust, adaptable methodology to test disputed cases of crossover, including relative clauses in English and French \citep{postal_remarks_1993} %, proper names, % \citep{chomsky_conditions_1976, lasnik_weakest_1991}
+and variation in weak crossover across languages (\citealp{bresnan_morphology_1998,lyu_weak_2017}; i.a.).
+%We demonstrate the results for proper names, showing that they display a highly similar strong/weak crossover effect to \emph{wh}-words. The observed strong effect supports accounts such as , % or proper-name-raising accounts such as Shannon sent me
+%while the strong/weak distinction presents an open question for future theoretical research.
+
+%We do not see the high acceptability for the weak variants proposed by \citet{chomsky_conditions_1976}, but believe this can be attributed to our design items differing in information structure from \citeauthor{chomsky_conditions_1976}'s examples. Given the difference that we find based on syntax alone, and the potential for even larger differences in the right discourse conditions, this demonstrates that proper name crossover remains an open area of theoretical research.
+
+\newpage
+
+\sectitle{Figures}
+\vspace*{0.75em}
+
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=0.65\textwidth]{screenshots/singularthey_screenshot_essay_2s_crossover_they.png}
+\vspace*{0.5em}
+\captionof{figure}{Secondary strong crossover sentence in the ``paraphrase'' design (Experiment 1)}
+\label{fig:singular-they-design-paraphrase}
+\end{minipage}
+
+\vspace*{1em}
+\begin{minipage}{\textwidth}
+\centering
+\begin{tabular}{lrr}
+\toprule
+Parameter & Odds ratio & $p$-value \\
+\midrule
+\textbf{\emph{Wh}-crossover} & & \\
+Distractor NP (reading) & -- & $p = 0.14$ \\
+wh\ldots{}pronoun\ldots{}gap & 0.33 & $p < 0.05$ \\
+wh\ldots{}pronoun\ldots{}gap * Distractor NP & 4.61 & $p < 0.05$ \\
+Strong vs. weak & 2.19 & $p < 0.05$ \\
+Strong vs. secondary strong & -- & $p = 0.30$ \\
+\textbf{Proper names} & & \\
+Distractor NP (reading) & -- & $p = 0.08$ \\
+pronoun\ldots{}name & 0.06 & $p < 0.05$ \\
+pronoun\ldots{}name * Distractor NP & 133.76 & $p < 0.05$ \\
+Strong vs. weak & 2.90 & $p < 0.05$ \\
+\bottomrule
+\end{tabular}
+\vspace*{0.5em}
+\captionof{table}{Model parameters for \emph{wh}-crossover and proper names}
+\label{tab:results}
+\end{minipage}
+
+\vspace*{0.4em}
+\sectitle{References}
+
+\renewcommand*{\bibfont}{\normalfont\footnotesize}
+\printbibliography[heading=none]
+
+
+\end{document}

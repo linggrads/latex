@@ -1,0 +1,256 @@
+\documentclass[11pt]{article}
+
+
+
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage[top=1in,left=1in,right=1in,bottom=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{ipa}
+\usepackage{array} 
+\usepackage{tree-dvips}
+\usepackage{tikz-qtree}
+\usepackage{multicol}
+\usepackage{soul}
+\usepackage{tikz-qtree-compat} 
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{bibentry}
+\usepackage{amssymb,amsmath,stmaryrd}
+\usepackage{tcolorbox}
+\usepackage{natbib}
+\usepackage{lscape}
+\usepackage{parskip}
+\usepackage{mdframed}
+\usepackage{tikz-qtree}
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[mathscr]{euscript}
+\usepackage{verbatim}
+\let\euscr\mathscr \let\mathscr\relax% just so we can load this and rsfs
+\usepackage[scr]{rsfso}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+\usepackage{tcolorbox}
+\pagestyle{fancy}
+\lhead{Ya\u{g}mur Sa\u{g} - LING 106}
+\rhead{Spring 2022 - Handout 10}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcommand{\intp}[1]{$\llbracket${#1}$\rrbracket$}
+\newcommand{\xmark}{\text{\ding{55}}}
+
+\usepackage[inference]{semantic}
+\usepackage{natbib} 
+\usepackage{linguex}
+\setlength{\bibsep}{0pt} \relax
+\setcitestyle{notesep={: },yysep={, }} \relax
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\definecolor{shadecolor}{RGB}{150,150,150}
+
+\tikzset{every tree node/.style={align=center,anchor=north}}
+
+\date{}
+
+\begin{document} 
+
+\begin{center}
+\textbf{\LARGE Executing the Fregean Program\\ Function Application}\footnote{The content of this handout draws on Coppock and Champollion (2022).}
+\end{center}
+
+\vspace{20pt} 
+
+
+
+We will now use Lambda Calculus to translate constituents of arbitrary size, from words and phrases all the way up to the sentences themselves, into logic.
+
+Let's go over some fundamentals: 
+
+\begin{itemize}
+\item Lambda calculus expressions translate syntactic constituents and compose in a way that mirrors the syntactic structure of the sentence.	
+\item It is the job of a theory of syntax to determine what these constituents are; here will only give a toy syntax that can be replaced by more sophisticated syntactic theories without significant changes to the semantics.
+\item We will now execute Frege's conjecture: there is only one way for the meanings of two subexpressions to combine to give the meaning of a complex expression: application of a function to an argument. 
+\item The resulting semantic system will be an \textbf{extensional semantics}. We won't talk about \textbf{intensional semantics} in this course. 
+\end{itemize}
+
+\vspace{10pt} 
+\underline{Example:}
+
+Let's now see how \textit{\textbf{Pepe meowed}} is composed: 
+
+
+
+\ex.  \a. \textit{\textbf{Pepe}} $\rightsquigarrow$ $p$ (type $e$)
+\b. \textit{\textbf{meowed}} $\rightsquigarrow$ $\lambda x. \ Meowed(x)$ (type $\langle e,t \rangle$)
+\c. \textit{\textbf{Pepe meowed}} $\rightsquigarrow$ $Meowed(p)$ (type $t$)
+
+
+\ex. \leavevmode\vadjust{\vspace{-\baselineskip}}\newline \begin{tikzpicture}	
+[sibling distance=20pt, level distance=40pt][scale=1]
+\Tree [. {$t$}\\{$Meowed(p)$} [. {$e$}\\{$p$} [. \textit{\textbf{Pepe}} ] ] [. {$\langle e, t\rangle$}\\{$\lambda x. \ Meowed(x)$} [.  \textit{\textbf{meowed}} ] ]]
+\end{tikzpicture}
+
+
+$\llbracket Meowed(p)\rrbracket^{M,g} \rightsquigarrow$  1 iff Pepe meowed in M. 
+
+
+
+Assuming that Pepe meowed in $M$: 
+
+\ex. $\llbracket Meowed(p)\rrbracket^{M,g} \rightsquigarrow$  1 
+
+\newpage
+Now, let's translate a well-behaved `fragment' of English, consisting of the following ingredients: 
+
+\begin{enumerate}
+\item a specification of our formal representation language, with syntactic and semantic rules, 
+\item a specification of the syntax of the English expressions we cover, 
+\item a list of lexical entries,
+\item a list of composition rules
+\end{enumerate}
+
+
+\vspace{10pt}
+
+We already have the first one: L$_\lambda$. Here are some examples for 2 and 3: 
+
+
+
+\begin{multicols}{2}
+\includegraphics[scale=.6]{syntax.png}
+
+\includegraphics[scale=.6]{lexicon.png}
+\end{multicols}
+
+
+Here are our composition rules: 
+
+
+
+
+
+
+\begin{center}
+\includegraphics[scale=.6]{compositionrule.png}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=.6]{compositionrule2.png}
+\end{center}
+
+\newpage
+
+\begin{multicols}{2}
+
+Here is `Agnetha smiled': \\
+
+\begin{tikzpicture}	
+[sibling distance=20pt, level distance=60pt][scale=1]
+\Tree [. S\\{$t$}\\{$Smiled(a)$} [. DP\\{$e$}\\{$a$} [. D\\{$e$}\\{$a$} [. \textbf{\textit{Agnetha}} ]  ]] [. VP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Smiled(x)$} [. V\\{$\langle e, t\rangle$}\\{$\lambda x. \ Smiled(x)$}  [. \textbf{\textit{smiled}} ]]]]
+\end{tikzpicture}
+
+\columnbreak
+
+Here is `Agnetha loves Bj\"{o}rn': \\
+
+\begin{tikzpicture}	
+[sibling distance=20pt, level distance=60pt][scale=1]
+\Tree [. S\\{$t$}\\{$Loves(a, b)$} [. DP\\{$e$}\\{$a$} [. \textbf{\textit{Agnetha}}   ]] [. VP\\{$\langle e, t\rangle$}\\{$\lambda y. \ Loves(y, b)$} [. V\\{$\langle e, \langle e, t\rangle\rangle$}\\{$\lambda x. \lambda y. \ Loves(y, x)$}  [. \textbf{\textit{loves}} ]] [. DP\\{$e$}\\{$b$} [. \textbf{\textit{Bj\"{o}rn}} ] ]]]
+\end{tikzpicture}
+
+\end{multicols}
+
+
+
+
+
+
+
+
+Now let's do the following together: 
+
+Every singer is Swedish: 
+
+\textcolor{blue}{
+\begin{tikzpicture}	
+[sibling distance=20pt, level distance=70pt][scale=1]
+\Tree [. S\\$t$\\{$\forall x.  \ [Singer(x) \rightarrow Swedish(x)]$} [. DP\\{$\langle\langle e, t\rangle, t\rangle$}\\{$\lambda Q. \ \forall x.  \ [Singer(x) \rightarrow Q(x)]$} [. D\\{$\langle\langle e, t\rangle, \langle \langle e, t\rangle, t \rangle\rangle$}\\{$\lambda P. \ \lambda Q. \ \forall x.  \ [P(x) \rightarrow Q(x)]$} [. \textit{\textbf{every}} ] ] [. NP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Singer(x)$} [. \textit{\textbf{singer}} ] ]]  [. VP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Swedish(x)$} [. V\\{$\langle\langle e, t\rangle, \langle e, t\rangle\rangle$}\\{$\lambda P. \ P$} [.  \textit{\textbf{is}} ]] [. AdjP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Swedish(x)$} [. \textbf{\textit{Swedish}} ]]]]]
+\end{tikzpicture}}
+
+\newpage
+Benny is a musician: 
+
+
+\textcolor{blue}{
+\begin{tikzpicture}	
+[sibling distance=20pt, level distance=70pt][scale=1]
+\Tree [. S\\{$t$}\\{$Musician(a)$} [. DP\\{$e$}\\{$a$} [. \textbf{\textit{Agnetha}}   ]] [. VP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Musician(x)$} [. V\\{$\langle\langle e, t\rangle, \langle e, t\rangle\rangle$}\\{$\lambda P. \ P$} [.  \textit{\textbf{is}} ]] [. DP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Musician(x)$} [. D\\{$\langle\langle e, t\rangle, \langle e, t\rangle\rangle$}\\{$\lambda P. \ P$} [.  \textit{\textbf{a}} ]] [. NP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Musician(x)$} [. \textbf{\textit{musician}} ]]]]]
+\end{tikzpicture}}
+
+
+\newpage
+
+Agnetha is with Bj\"{o}rn: 
+
+
+\textcolor{blue}{
+\begin{tikzpicture}	
+[sibling distance=20pt, level distance=70pt][scale=1]
+\Tree [. S\\{$t$}\\{$With(a, b)$} [. DP\\{$e$}\\{$a$} [. \textbf{\textit{Agnetha}}   ]] [. VP\\{$\langle e, t\rangle$}\\{$\lambda y.  \ With(y, b)$} [. V\\{$\langle\langle e, t\rangle, \langle e, t\rangle\rangle$}\\{$\lambda P. \ P$} [.  \textit{\textbf{is}} ]] [. PP\\{$\langle e, t\rangle$}\\{$\lambda y.  \ With(y, b)$} [. P\\{$\langle e, \langle e, t\rangle\rangle$}\\{$\lambda x. \lambda y.  \ With(y, x)$} [.  \textit{\textbf{with}} ]] [. DP\\{$e$}\\{$b$} [. \textbf{\textit{Bj\"{o}rn}}   ]]]]]
+\end{tikzpicture}}
+
+\newpage
+
+Agnetha is proud of Bj\"{o}rn: 
+
+\textcolor{blue}{
+\begin{tikzpicture}	
+[sibling distance=20pt, level distance=70pt][scale=1]
+\Tree [. S\\{$t$}\\{$Proud(a, b)$} [. DP\\{$e$}\\{$a$} [. \textbf{\textit{Agnetha}}   ]] [. VP\\{$\langle e, t\rangle$}\\{$\lambda y.  \ Proud(y, b)$} [. V\\{$\langle\langle e, t\rangle, \langle e, t\rangle\rangle$}\\{$\lambda P. \ P$} [.  \textit{\textbf{is}} ]] [. AdjP\\{$\langle e, t\rangle$}\\{$\lambda y.  \ Proud(y, b)$} [. Adj\\{$\langle e, \langle e, t\rangle\rangle$}\\{$\lambda x. \lambda y.  \ Proud(y, x)$} [.  \textit{\textbf{proud}} ]] [. PP\\{$e$}\\{$b$} [. P\\{$\langle e, e\rangle$}\\{$\lambda x. x$} [. \textbf{\textit{of}} ] ] [. DP\\{$e$}\\{$b$} [. \textbf{\textit{Bj\"{o}rn}}   ]]]]]]
+\end{tikzpicture}}
+
+
+\newpage
+
+Benny is not a singer.
+
+\textcolor{blue}{
+\begin{tikzpicture}	
+[sibling distance=20pt, level distance=70pt][scale=1]
+\Tree [. S\\{$t$}\\{$\neg Singer(a)$} [. DP\\{$e$}\\{$a$} [. \textbf{\textit{Agnetha}}   ]] [. VP\\{$\langle e, t\rangle$}\\{$\lambda x. \ \neg Singer(x)$} [. V\\{$\langle\langle e, t\rangle, \langle e, t\rangle\rangle$}\\{$\lambda P. \ P$} [.  \textit{\textbf{is}} ]] [. NegP\\{$\langle e, t\rangle$}\\{$\lambda x. \ \neg Singer(x)$} [. Neg\\{$\langle\langle e, t\rangle, \langle e, t\rangle\rangle$}\\{$\lambda P. \lambda x. \ \neg P(x)$} [.  \textit{\textbf{not}} ] ] [. DP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Singer(x)$} [. D\\{$\langle\langle e, t\rangle, \langle e, t\rangle\rangle$}\\{$\lambda P. \ P$} [.  \textit{\textbf{a}} ]] [. NP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Musician(x)$} [. \textbf{\textit{singer}} ]]]]]]
+\end{tikzpicture}}
+
+\newpage
+
+
+\textbf{EXTRA EXAMPLES} 
+
+Some singer is Swedish: 
+
+\begin{tikzpicture}	
+[sibling distance=20pt, level distance=70pt][scale=1]
+\Tree [. S\\$t$\\{$\exists x.  \ [Singer(x) \wedge Swedish(x)]$} [. DP\\{$\langle\langle e, t\rangle, t\rangle$}\\{$\lambda Q. \ \exists x.  \ [Singer(x) \wedge Q(x)]$} [. D\\{$\langle\langle e, t\rangle, \langle \langle e, t\rangle, t \rangle\rangle$}\\{$\lambda P. \ \lambda Q. \ \exists x.  \ [P(x) \wedge Q(x)]$} [. \textit{\textbf{some}} ] ] [. NP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Singer(x)$} [. \textit{\textbf{singer}} ] ]]  [. VP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Swedish(x)$} [. V\\{$\langle\langle e, t\rangle, \langle e, t\rangle\rangle$}\\{$\lambda P. \ P$} [.  \textit{\textbf{is}} ]] [. AdjP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Swedish(x)$} [. \textbf{\textit{Swedish}} ]]]]]
+\end{tikzpicture}
+
+
+Some singer is not Swedish: 
+
+\begin{tikzpicture}	
+[sibling distance=20pt, level distance=70pt][scale=1]
+\Tree [. S\\$t$\\{$\exists x.  \ [Singer(x) \wedge \neg Swedish(x)]$} [. DP\\{$\langle\langle e, t\rangle, t\rangle$}\\{$\lambda Q. \ \exists x.  \ [Singer(x) \wedge Q(x)]$} [. D\\{$\langle\langle e, t\rangle, \langle \langle e, t\rangle, t \rangle\rangle$}\\{$\lambda P. \ \lambda Q. \ \exists x.  \ [P(x) \wedge Q(x)]$} [. \textit{\textbf{some}} ] ] [. NP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Singer(x)$} [. \textit{\textbf{singer}} ] ]]  [. VP\\{$\langle e, t\rangle$}\\{$\lambda x. \ \neg Swedish(x)$} [. V\\{$\langle\langle e, t\rangle, \langle e, t\rangle\rangle$}\\{$\lambda P. \ P$} [.  \textit{\textbf{is}} ]] [. NegP\\{$\langle e, t\rangle$}\\{$\lambda x. \ \neg Swedish(x)$} [. Neg\\{$\langle\langle e, t\rangle, \langle e, t\rangle\rangle$}\\{$\lambda P. \lambda x. \ \neg P(x)$} [.  \textit{\textbf{not}} ] ] [. AdjP\\{$\langle e, t\rangle$}\\{$\lambda x. \ Swedish(x)$} [. \textbf{\textit{Swedish}} ]]]]]
+\end{tikzpicture}
+
+
+\newpage
+Benny is curious about Frida: 
+
+
+\begin{tikzpicture}	
+[sibling distance=20pt, level distance=70pt][scale=1]
+\Tree [. S\\{$t$}\\{$Curious(e, f)$} [. DP\\{$e$}\\{$e$} [. \textbf{\textit{Benny}}   ]] [. VP\\{$\langle e, t\rangle$}\\{$\lambda y.  \ Curious(y, f)$} [. V\\{$\langle\langle e, t\rangle, \langle e, t\rangle\rangle$}\\{$\lambda P. \ P$} [.  \textit{\textbf{is}} ]] [. AdjP\\{$\langle e, t\rangle$}\\{$\lambda y.  \ Curious(y, f)$} [. Adj\\{$\langle e, \langle e, t\rangle\rangle$}\\{$\lambda x. \lambda y.  \ Curious(y, x)$} [.  \textit{\textbf{curious}} ]] [. PP\\{$e$}\\{$f$} [. P\\{$\langle e, e\rangle$}\\{$\lambda x. x$} [. \textbf{\textit{about}} ] ] [. DP\\{$e$}\\{$f$} [. \textbf{\textit{Frida}}   ]]]]]]
+\end{tikzpicture}
+
+
+\end{document}
