@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2.5cm,right=2.5cm,top=3.5cm,bottom=2.5cm]{geometry}%change margins
+\usepackage{parskip} %For paragraph formatting
+\usepackage{times} %times new roman font
+
+\usepackage{expex} % Linguistic examples & glosses
+\lingset{everygla={},aboveglftskip=-0.5ex,aboveexskip=1ex,belowexskip=-1ex,Everyex={\parskip=0pt}} % Expex gloss configuration to work with parskip (removes unnecessary whitespace).  Also unitalicizes top line of gloss
+
+
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+
+
+Consider the following sentence:
+
+% This uses expex formatting - see http://mirrors.ibiblio.org/CTAN/macros/generic/expex/expex-doc.pdf
+\ex This is a sentence \label{ex:first}
+\xe
+\pex~ % Use the tilde for consecutive examples to get better spacing
+\a \ljudge{*} Sentence a
+\a \ljudge{\#} Sentence b
+\a Sentence c
+\xe
+
+Shiny glosses! I can refer to example (\ref{ex:first}) like this. %Requires you to have put a \label there.
+
+\ex
+\begingl
+\gla Fische, die Fische fischen, fischen Fische, die Fische fischen. //
+\glb fish.{\sc pl.nom/acc} which.{\sc pl.nom/acc} fish.{\sc pl.nom/acc} fish.{\sc 1/3.pl.pres} fish.{\sc 1/3.pl.pres} fish.{\sc pl.nom/acc} which.{\sc pl.nom/acc} fish.{\sc pl.nom/acc} fish.{\sc 1/3.pl.pres} //
+\glft `Fish which fish fish fish fish which fish fish.' //
+\endgl
+\xe
+
+
+\end{document}

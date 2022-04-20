@@ -1,0 +1,241 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[X2, T2B,T2A,T2C,T1]{fontenc} %this is needed to type Cyrillic, but it messes with the formatting sometimes
+\usepackage[main = english, russian]{babel}
+%\babelfont[russian]{rm}{FreeSerif}
+%\babelfont[english]{rm}{ComputerModern}
+
+\newcommand{\cyrchar}[1]{\foreignlanguage{russian}{#1}}
+\DeclareTextSymbolDefault{\CYRSDSC}{X2}
+\DeclareTextSymbolDefault{\cyrsdsc}{X2}
+%initializing several new commands
+\newcommand{\strt}{\noindent $\bullet$ }
+% \newcommand{\go}{\indent $\Rightarrow$ }
+% \newcommand{\gogo}{\indent \indent $\Rightarrow$ }
+% \newcommand{\lf}[1]{{$\llbracket$#1$\rrbracket$}}
+\newcommand{\op}[2]{\ensuremath{\langle #1,#2\rangle}}
+\newcommand{\xmark}{\ding{55} }
+
+%%%cell colors
+\newcommand{\cyan}{\cellcolor{cyan!25}}
+\newcommand{\yellow}{\cellcolor{yellow!25}}
+\newcommand{\green}{\cellcolor{green!25}}
+\newcommand{\gray}{\cellcolor{gray!25}}
+\newcommand{\graylt}{\cellcolor{gray!15}}
+\newcommand{\red}{\cellcolor{red!25}}
+\newcommand{\cyanlt}{\cellcolor{cyan!15}}
+\newcommand{\redlt}{\cellcolor{red!15}}
+
+
+\newcommand{\rcommentg}[1]{\hfill\raisebox{1.9\baselineskip}[0pt][0pt]{#1}}
+
+\newcommand{\changis}{\v{c}a\textipa{N}g\"{\i}s}
+
+\renewcommand{\firstrefdash}{}
+
+%%%%%%%%%%%%%
+
+% \usepackage{etoolbox}
+
+% \DeclareRobustCommand\citepos
+%   {\begingroup
+%   \let\NAT@nmfmt\NAT@posfmt% ...except with a different name format
+%   \NAT@swafalse\let\NAT@ctype\z@\NAT@partrue
+%   \@ifstar{\NAT@fulltrue\NAT@citetp}{\NAT@fullfalse\NAT@citetp}}
+   
+%   \let\NAT@orig@nmfmt\NAT@nmfmt
+% \def\NAT@posfmt#1{\NAT@orig@nmfmt{#1's}}
+
+% \makeatother
+% %%%%%%%%%%%%%%%%
+
+
+% \usepackage{libertine}
+% \usepackage{libertinust1math}
+\usepackage{times}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}  %gives you llbracket and rrbracket
+\usepackage{mathastext} %Prevents math mode from italicizing
+\usepackage{mathtools}
+\usepackage{adjustbox}
+\usepackage{tipa}
+\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pifont} %\ding{43} for pointer finger
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{tikz-qtree-compat}
+\usetikzlibrary{shapes.misc,shadows,decorations.pathreplacing}
+\usepackage{forest}
+     \forestset{
+    sn edges/.style={for tree = {parent anchor=children, child anchor=parent}}}
+\useforestlibrary{linguistics}
+\usepackage{arydshln}    %for dashed lines
+\usepackage{rotating}    %for angled text
+\usepackage{geometry}
+    \geometry{left=1in,right=1in,top=1in,bottom=1in}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{setspace}
+%\frenchspacing
+\singlespacing
+%\setstretch{1}
+\usepackage{multirow,bigdelim}
+\usepackage{dingbat}
+% \usepackage{fancyhdr}
+%      \pagestyle{fancy}
+%      \rhead{}
+%      \lhead{}
+%      \fancypagestyle{frontmatter}{\fancyhead{}}
+%     % %\fancyhf{}
+\usepackage{diagbox}
+\usepackage{natbib}
+    \setcitestyle{comma,aysep={},yysep={,},notesep={: }}
+\usepackage{soul}
+\usepackage{linguex}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepackage{slashbox}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\usepackage{hyperref}
+    \hypersetup{colorlinks=True,linkcolor=blue,citecolor=blue}
+\usepackage{float}
+
+\title{}
+\author{}
+\date{December 2021}
+
+\begin{document}
+
+%\maketitle
+
+
+\begin{center}
+    {Pre-exhaustification Creates Multifunctionality: Evidence from Tuvan \textit{-daa}}\\
+    Ian L. Kirby
+\end{center}
+
+\vspace{-8pt}
+
+This paper examines the multifunctional particle \textit{-daa} in the understudied Siberian Turkic language Tuvan, based on targeted elicitations. The distribution of \textit{-daa} significantly seems to overlap entirely Japanese \textit{-mo}, a well-studied particle whose diverse meanings across narrow contexts has been the focus of much semantic analysis (Kratzer \& Shimoyama, Szabolcsi 2015).  Such multifunctional particles are an important object of study; if we assume that each role is the compositional result of a unified semantics, they reveal intricate interactions of logic and linguistic structure (Chierchia 2013, Szabolcsi 2015, Xiang 2020, Mitrovi\'{c} 2021).  The focus of this paper is largely \textit{-daa}'s surprising behavior in embedded clauses, where \textit{-daa} departs significantly from Japanese \textit{-mo}. These differences make \textit{-daa} incompatible with the popular wide-scope universal ($=$`WS-$\forall$') analysis of \textsc{mo}-particles (Kratzer \& Shimoyama 2002, Shimoyama 2006, 2011, Szabolcsi 2015).  Adopting an alternatives-and-exhaustification approach to polarity and focus (Chierchia 2013, Mitrovi\'{c} 2021), we argue that \textit{-daa} is an operator which ``pre-exhaustifies'' its prejacent's domain alternatives, along the lines proposed by Xiang (2020) for Mandarin \textit{dou}.
+
+\noindent \textbf{Distribution: } Table \ref{distribution table} summarizes \textit{-daa}'s significant overlap with Japanese \textit{-mo}.  Row lines are used to group the structural roles the particles serve: \hyperref[distribution table]{(a,b)} are focus particle roles, \hyperref[distribution table]{(b,c)} are coordination particle roles, and \hyperref[distribution table]{(e-h)} are quantifier particle roles.  Both particles can mark a focus with either a \hyperref[distribution table]{(a)} basic additive or \hyperref[distribution table]{(b)} mirative `even'-like reading (depending on the context and emphasis in the sentence).  Next, these particles can mark each coordinand in a `both...and' \hyperref[distribution table]{(c)} or `neither...nor' \hyperref[distribution table]{(d)} conjunction (the latter arising when the verb is negated).  Finally, \textit{-daa} and \textit{-mo} appear in a wide-variety of indefinite quantification NPs (QNPs) including minimizer NPIs \hyperref[distribution table]{(e)} when the particle's host is a low-scalar existential like Tuvan \textit{\changis} `one; a single; only (adjective)', Japanese \textit{hito} `one'.  With a WH-word host like \textit{k\"{\i}m}, \textit{dare} `who', these particles form indefinites which function as NPIs \hyperref[distribution table]{(f)} in negative sentences, universal generalized quantifer \hyperref[distribution table]{(g)} in positive sentences, and universal free-choice items \hyperref[distribution table]{(h)} with modals and the aid of another particle (optionally in Tuvan).  While we think all these interpretations, in spite of their differences, can be seen as extensions of one single underlying meaning of \textit{-daa}, this paper focuses on \hyperref[distribution table]{(e-g)} and \hyperref[distribution table]{(b)}.
+
+
+% \begin{tabular}{c|c}
+%      &  \\
+%      & 
+% \end{tabular}
+
+% This paper examines \textit{-daa} in Tuvan (Turkic$>$South Siberian) and its cognate \textit{da} in Sakha (Turkic$>$North Siberian), based on elicited data.  Semantically, the roles served by Sakha \textit{da} are a subset of those performed by Tuvan \textit{-daa}, though 
+
+% \noindent \textbf{Distribution: }
+
+\vspace{-10pt}
+\begin{table}[H]
+    \centering
+     \caption{Distribution of Tuv \textit{-daa}, Jpn \textit{-mo} (Kratzer \& Shimoyama 2002, Shimoyama 2006, Szabolcsi 2015)}
+    \begin{tabular}{lllcc}
+        \hline & \multicolumn{2}{l}{Role}& Tuv \textit{-daa} & Jpn \textit{-mo}\\\hline 
+    a. & Additive &  `X, too'; `not X, either'   & X-\textbf{daa} & X-\textbf{mo} \\
+    b. & Mirative &  `(not) even X'  & X-\textbf{daa} & X-\textbf{mo}\\\hline 
+    c. & Coordination & `Both X and Y'  & X-\textbf{daa} Y-\textbf{daa} & X-\textbf{mo} Y-\textbf{mo}\\
+    d. & Coordination & `Neither X nor Y' (w /\textsc{neg} verb)  & X-\textbf{daa} Y-\textbf{daa} & X\textbf{-mo} Y-\textbf{mo} \\\hline 
+    e. & Minimizer NPI & `(not) a single N'  & \changis-\textbf{daa} N & hito-N-\textbf{mo} \\ 
+    f. & NPI pronoun & `anybody'  & k\"{\i}m-\textbf{daa} & dare-\textbf{mo}\\
+    g. & $\forall$-GQ pronoun & `everybody'  & k\"{\i}m-\textbf{daa} & dare-\textbf{mo}\\
+    h. & $\forall$-FC pronoun & `anybody; whoeover' & k\"{\i}m-\textbf{daa} (bolza) & dare-de-\textbf{mo}\\\hline 
+    \end{tabular}
+    \label{distribution table}
+\end{table}
+\vspace{-10pt}
+
+
+
+\noindent \textbf{The WS-$\forall$ approach: }For particles like Japanese \textit{-mo}, many have argued that elements like \textit{dare-mo} `anybody' on its \hyperref[distribution table]{(f)} reading are not narrow-scope existentials (like English NPIs), but rather are wide-scope universals (refs above).  This capitalizes on the De Morgan's equivalence of $\forall x[\neg \phi(x)]$ and $\neg \exists x[\phi(x)]$ (Shimoyama 2011).  This unites these particles' universal GQ \hyperref[distribution table]{(g)} and NPI meanings \hyperref[distribution table]{(f)} meanings, as well as their scope effects as coordinators \hyperref[distribution table]{(c,d)}.  Indeed, for Tuvan WH-\textit{daa} is interpreted as a universal in affirmative episodic sentences \ref{pos 1}, but invariantly as an NPI with clause-mate negation \hyperref[neg 1]{(1b-i,ii)}.
+
+\vspace{-8pt}
+\exg.\label{tuv ex univ npi}Men d\"{u}\"{u}n \textbf{k\"{\i}mn\"{\i}-daa} k\"{o}r\{d\"{u}m / -be-dim\}\\
+I yesterday who.\textsc{acc}-\textit{daa} see\{\textsc{-pst.1sg} / \textsc{-neg-pst.1sg}\}\\
+\a.\label{pos 1} Positive: `I saw everybody yesterday'
+\b.\label{neg 1}\hspace{-7pt}\begin{tabular}[t]{lll}
+    Negative: & (i) `I didn't see anybody yesterday' & (ii) \#`I didn't see everybody yesterday'\\
+\end{tabular}
+\vspace{-8pt}
+
+On a WS-$\forall$ approach, the absence of reading \hyperref[neg 1]{(1b-ii)} is totally expected, as it would be interpreted as a universal obligatorily taking wide-scope over negation.
+
+\noindent\textbf{Embedded \textit{-daa} QNPs: } WH-\textit{daa}'s similarity to Japanese \textit{-mo} breaks down when negation is hosted in a clause higher than the WH-\textit{daa} element itself.  In Japanese, WH-\textit{mo} does not yield NPI readings with matrix negation (Shimoyama 2011).  In contrast, in Tuvan unlike the situation with clause-mate matrix negation \ref{tuv ex univ npi}, embedded WH-\textit{daa} with matrix negation become ambiguous between the NPI \hyperref[tuv ex embedded 1]{(2a-i)} and universal \hyperref[tuv ex embedded 1]{(2a-ii)} reading.  Moreover \textit{\changis-daa}, an NPI with no free-choice or universal readings, is unambiguous \ref{tuv ex embedded 2}.
+
+\vspace{-8pt}
+\ex.\label{tuv ex embedded}
+\ag.\label{tuv ex embedded 1}Men $[$seni \textbf{\v{c}\"{u}n\"{u}-daa} nom\v{c}a-an dep$]$ di\textipa{N}na-va-d\"{\i}m\\
+I $[$you.\textsc{acc} what.\textsc{acc}-\textit{daa} read-\textsc{pst} \textsc{comp}$]$ hear-\textsc{neg-pst.1sg}\\
+\hspace{-7pt}\begin{tabular}[t]{ll}
+    (i) `I didn't hear that you read anything' & (ii) `I didn't hear that you read everything' \\
+\end{tabular}
+\bg.\label{tuv ex embedded 2}Men $[$seni \textbf{\changis-daa} \textbf{nom} nom\v{c}a-an dep$]$ di\textipa{N}na-*(va)-d\"{\i}m\\
+I $[$you.\textsc{acc} one-\textit{daa} book read-\textsc{pst} \textsc{comp}$]$ hear-\textsc{(neg)-pst.1sg}\\
+`I didn't hear that you read even one book', `I didn't hear that you read even one book'
+\vspace{-8pt}
+
+On a WS-$\forall$ analysis, WH-\textit{daa} must be allowed to move to edge of either the embedded clause or long distance to the matrix clause to get the two readings of \ref{tuv ex embedded 1}. On the other hand, \textit{\changis-daa} \ref{tuv ex embedded 2} is difficult to analyze as a universal; Shimoyama (2011: 435) grants that the parallel Japanese \textit{hito-}N-\textit{mo} is indeed interpreted as a narrow-scope existential.  \ref{tuv ex embedded 2} then shows that licensing of NPIs across clause-boundaries is indeed grammatical in Tuvan.  How then, can we account for the two reading of \ref{tuv ex embedded 1}?
+
+Most significantly, when pure-NPI \textit{\changis-daa} and NPI/$\forall$-GQ WH-\textit{daa} are combined in sentences like \ref{tuv ex embedded}, the reading of WH-\textit{daa} is fixed to the NPI reading \hyperref[double embedded]{(3a)}.
+
+\vspace{-8pt}
+\exg.\label{double embedded}Men $[[$\textbf{\changis-daa} \textbf{ki\v{z}i-ni}$]$ \textbf{\v{c}\"{u}n\"{u}-daa} a\v{s}ta-an dep$]$ di\textipa{N}na-va-d\"{\i}m\\
+I $[[$one-\textit{daa} person-\textsc{acc}$]$ what.\textsc{acc}-\textit{daa} clean-\textsc{pst} \textsc{comp}$]$ hear-\textsc{neg-pst.1sg}\\
+\hspace{-7pt}\begin{tabular}[t]{ll}
+   a. `I didn't hear that anyone cleaned anything  & b. *`I didn't hear that anyone cleaned everything'\\
+\end{tabular}
+\vspace{-8pt}
+
+
+{\ref{double embedded}} presents a further contrast with Japanese, which disprefers minimizer \textit{hito}-N-\textit{mo} subjects with WH-\textit{mo} NPI objects---Shimoyama (2011: 434-8) attributes this to conflicting scope requirements: \textit{hito-}N-\textit{mo} wants to be in the scope of negation while WH-\textit{mo} wants to scope above negation.  Were Tuvan WH-\textit{daa} to have the same scope requirements, we would expect the universal \hyperref[double embedded]{(3b)} reading of \ref{double embedded}, not the NPI reading \hyperref[double embedded]{(3a)}.  Thus, Tuvan WH-\textit{daa} NPIs are \textit{prima facie} incompatible with a WS-$\forall$ analysis.
+
+\noindent\textbf{Proposal: } We contend that a better analysis for Tuvan WH-\textit{daa} lies in the alternatives-and-exhaustification framework (Chierchia 2013).  We propose that \textit{-daa} works similarly to Xiang's (2020) approach to Mandarin \textit{-dou}: \textit{-daa'}s associate is an existential (namely, the WH-word) \textit{-daa} itself has three semantic components: (i) it presupposes that tis host (the prejacent) has subdomain alternatives, (b) it asserts the prejacent, and (c) it requires that the subdomain alternatives are ``pre-exhaustified''.  \textit{-Daa} can thus be viewed as an overt mophological manifestation of the recursive exhaustifier $O_{Exh-DA}$ (Chierchia 2013), defined as follows:
+
+\vspace{-8pt}
+\ex.\label{def daa}$\llbracket$O$_{Exh-DA,C}\rrbracket=\lambda \phi:\exists \psi \in \textsc{sub}(\phi,C).\ \phi =1\wedge \forall \psi \in \textsc{sub}(\phi,C)[(\psi=1)\rightarrow (\psi \subset \phi)]$\\(where `\textsc{sub}$(\phi,C)$'=subdomain ALTs of $\phi$ in context C, and `$\subset$'=entails)
+\vspace{-8pt}
+
+In positive contexts \ref{def daa} leads to strengthening of the basic existential meaning to a universal (see Szabolcsi 2017).  The two LFs of \ref{tuv ex embedded 1} are obtained by applying the exhaustifier to the matrix clause for the NPI reading \hyperref[tuv ex embedded 1]{(2a-i)}, and the embedded clause for the universal reading \hyperref[tuv ex embedded 1]{(2a-ii)}.  The pure NPI \textit{\changis-daa} gives rise to an intervention effect in \hyperref[double embedded]{(8)} because \textit{\changis-daa} is only interpretable with an exhaustifier in the matrix clause, hence the reading being fixed.  We will further show how Xiang's (2020: 200-1) extensions of subdomain alternatives to probability ordered ones causes \ref{def daa} to create an \textit{even}-like reading.
+
+
+
+% \vspace{-8pt}
+% \ex.\label{solution}\begin{tabular}[t]{ll}
+%     a. $[_{CP}\ O_{Exh-DA}\ \neg [I\ hear\ [_{CP}\ \exists x[you\ read\ x]]]$\hspace{-5pt} & b. $[_{CP}\  \neg [I\ hear\ [_{CP}\ O_{Exh-DA}\ \exists x[you\ read\ x]]]$   \\
+% \end{tabular}
+
+
+% \ex.\begin{tabular}{}
+%      &  \\
+%      & \\
+% \end{tabular}
+
+
+% \ex.\begin{tabular}[t]{lllllllllr}
+%     a. & Ben & $[$kahve & de & \c{c}ay & da$]$ & i\c{c}\{-tim & / & -me-dim\} & (Turkish)\\
+%     b. & Men & $[$kofe & -daa & \v{s}ay & -daa$]$ & i\v{s}\{-tim &  / &  -pe-dim\} & (Tuvan)\\
+%     c. & Min & $[$kofye & da(\textgamma an\"{\i}) & \v{c}ay & da(\textgamma an\"{\i})& is\{-tim & / & -pe-tim\} & (Sakha)\\
+%     & I & coffee & \textsc{da} & tea & \textsc{da} & drink\{-\textsc{pst.1sg} & / & -\textsc{neg-pst.1sg}\}\\
+%     & \multicolumn{9}{l}{positive: `I drank both coffee and tea'}\\
+%     & \multicolumn{9}{l}{negative: `I didn't drink coffee or tea' $\neg(p\vee q)$}
+% \end{tabular}
+
+
+% \noindent \textbf{Semantic Derivations: }
+
+\noindent \textbf{References: } {\footnotesize$\bullet$ }Chierchia, G. (2013) \textit{Logic in Grammar.} Oxford. Kratzer, A. \& Shimoyama, J. (2002) Indet. Pronouns. \textit{Proc. of the 3rd Tokyo conf. in psycholing.} (pp. 1-25) {\footnotesize$\bullet$ }Mitrovi\'{c}, M. (2021) \textit{Superparticles}. Springer. {\footnotesize$\bullet$ }Shimoyama, J. (2006) Indet. Phrase Quant. in Jpn. \textit{NLS} (14: 139-173) (2011) Jpn. Indet. NPIs and Their Scope. \textit{J. of Sem.} (28: 413-450) {\footnotesize$\bullet$ }Szabolcsi, A. (2015) What do Quant. Particles do? \textit{L.\&P.} (38: 159-204) (2017) Add. Presupp. ... Focus Alternatives. \textit{Proc. 21st Amsterdam Coll.} (455-464) {\footnotesize$\bullet$ }Xiang, Y. (2020) Function Alternations of the Mandarin Particle \textit{Dou}. \textit{J. of Sem.} (37: 171-217)
+
+
+
+\end{document}
