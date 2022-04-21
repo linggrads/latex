@@ -189,3 +189,5 @@ Other examples:
 * Ross, Hayley. 2022. Impliciations of the Danish definiteness alternation for concord in Nanosyntax. (SinFonIJA). [[PDF](/ExampleFiles/SinFonIJAPosterNanosyntax.pdf)], [TeX](/ExampleFiles/SinfonIJAPosterNanosyntax.tex)]
 
 ## Sample slides
+
+* Ross, Hayley. 2021. Implications of the Danish definiteness alternation for concord in Nanosyntax. (SinFonIJA) [[PDF](/ExampleFiles/SinFonIJALightningTalkImplicationsDanishNanosyntax.pdf), [TeX](/ExampleFiles/SinFonIJALightningTalkImplicationsDanishNanosyntax.tex)]
