@@ -6,7 +6,15 @@ This is a repository for linguistics-related LaTeX resources.
 
 # Learning LaTeX
 
+* [Wikibook for latex for linguists](https://en.wikibooks.org/wiki/LaTeX/Linguistics)
+
 # Very useful tools
+
+* [Table generator](https://www.tablesgenerator.com/) - Generates latex code for excel-style tables.
+* [comphrehensive latex symbols list](http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf)
+* [detexify](https://detexify.kirelabs.org/classify.html) - You draw the symbol and it tells you which package you can get it in, and its command.
+* [Kevin's OT table generator](https://meluhha.com/tabular/)
+
 
 # Packages
 
@@ -17,6 +25,8 @@ There are three main glossing packages.  In order of difficulty, they are: ```gb
 
 ![](/ExampleFiles/Images/glosses.png)
 
+
+**NOTE** Do not declare more than one glossing packages in your preamble!  It causes weird issues.
 
 ### gb4e
 
