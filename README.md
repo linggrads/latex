@@ -21,9 +21,7 @@ This is a repository for linguistics-related LaTeX resources.
 
 ## Glossing packages
 
-There are three main glossing packages.  In order of difficulty, they are: ```gb4e``` ([documentation](https://ctan.math.illinois.edu/macros/latex/contrib/gb4e/gb4e-doc.pdf)), ```linguex``` ([documentation](https://texdoc.org/serve/linguex-doc.pdf/0)), and ```expex``` ([documentation](https://ctan.mirrors.hoobly.com/macros/generic/expex/expex-doc.pdf)).
-
-The fundamentals of writing three-line interlinear glosses is the same in each of these three packages.  What you type is a 
+There are three main glossing packages.  In order of difficulty, they are: ```gb4e``` ([documentation](https://ctan.math.illinois.edu/macros/latex/contrib/gb4e/gb4e-doc.pdf)), ```linguex``` ([documentation](https://texdoc.org/serve/linguex-doc.pdf/0)), and ```expex``` ([documentation](https://ctan.mirrors.hoobly.com/macros/generic/expex/expex-doc.pdf)).  **NOTE:** Do not declare more than one glossing packages in your preamble!
 
 
 Let's examine how to write the following simple examples:
@@ -31,7 +29,7 @@ Let's examine how to write the following simple examples:
 ![](/ExampleFiles/Images/glosses.png)
 
 
-**NOTE** Do not declare more than one glossing packages in your preamble!  It causes weird issues.
+
 
 ### gb4e
 
@@ -51,7 +49,7 @@ Code
 \begin{document}
 
 
-Consider the following sentence:
+Consider the following sentence
 
 \begin{exe}
 \ex\label{ex:first} This is a sentence
@@ -66,13 +64,15 @@ Consider the following sentence:
 
 Shiny glosses!  I can refer to example (\ref{ex:first}) like this. %Have to put \ref{} in parentheses
 
-\begin{exe}
-    \ex
-        \gll 
-        Fische, die Fische Fische fischen, fischen die Fische fischen.\\ 
-        fish.\textsc{pl.nom/acc} which.\textsc{pl.nom/acc} fish.\textsc{pl.nom} fish.\textsc{fish.1/3.pres} fish.\textsc{1/3.pl.pres} fish.\textsc{1/3.pl.pres} which.\textsc{pl.nom/acc} fish.\textsc{1/3.pl.pres}\\ %Do not forget line breaks!
-        `Fish which fish fish fish fish which fish fish.'
+Example (\ref{ex:Turkish}) is a nice sentence in Turkish.
 
+
+\begin{exe}
+    \ex\label{ex:Turkish}
+        \gll 
+       Öğretmen-ler öğrenci-ler-e iki kitap ok-ut-tu.\\
+       teacher-{\sc pl.nom} student-{\sc pl-acc} two book read-{\sc caus-pst}\\ %Do not forget line breaks!
+        `The teacher made the students read two books..'
 \end{exe}
 
 \end{document}
@@ -112,9 +112,11 @@ Consider the following sentence:
     
 Shiny glosses!  I can refer to example \ref{ex:first} like this. %Do not put parentheses around \ref{}
 
-\exg.Fische, die Fische Fische fischen, fischen die Fische fischen.\\ %Line breaks are CRUCIAL!
-fish.\textsc{pl.nom/acc} which.\textsc{pl.nom/acc} fish.\textsc{pl.nom} fish.\textsc{fish.1/3.pres} fish.\textsc{1/3.pl.pres} fish.\textsc{1/3.pl.pres} which.\textsc{pl.nom/acc} fish.\textsc{1/3.pl.pres}\\ %Do not forget line breaks!
-`Fish which fish fish fish fish which fish fish.'
+Example \ref{ex:Turkish} is a nice sentence in Turkish.
+
+\exg.Öğretmen-ler öğrenci-ler-e iki kitap ok-ut-tu. \label{ex:Turkish}\\
+       teacher-{\sc pl.nom} student-{\sc pl-acc} two book read-{\sc caus-pst}\\ %Do not forget line breaks!
+        `The teacher made the students read two books..'
 
 
 
@@ -160,13 +162,17 @@ Consider the following sentence:
 
 Shiny glosses! I can refer to example (\ref{ex:first}) like this. %Requires you to have put a \label there.
 
-\ex
+
+Example (\ref{ex:Turkish}) is a nice sentence in Turkish.
+
+\ex \label{ex:Turkish}
 \begingl
-\gla Fische, die Fische fischen, fischen Fische, die Fische fischen. //
-\glb fish.{\sc pl.nom/acc} which.{\sc pl.nom/acc} fish.{\sc pl.nom/acc} fish.{\sc 1/3.pl.pres} fish.{\sc 1/3.pl.pres} fish.{\sc pl.nom/acc} which.{\sc pl.nom/acc} fish.{\sc pl.nom/acc} fish.{\sc 1/3.pl.pres} //
-\glft `Fish which fish fish fish fish which fish fish.' //
+\gla Öğretmen-ler öğrenci-ler-e iki kitap ok-ut-tu. //
+\glb teacher-{\sc pl.nom} student-{\sc pl-acc} two book read-{\sc caus-pst}//
+\glft `The teacher made the students read two books.'//
 \endgl
 \xe
+
 \end{document}
 ```
 

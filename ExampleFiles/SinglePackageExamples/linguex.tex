@@ -1,8 +1,8 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage[left=2.5cm,right=2.5cm,top=3.5cm,bottom=2.5cm]{geometry}%change margins \usepackage{parskip} %For paragraph formatting
-\usepackage{times} %times new roman font
+\usepackage[left=2.5cm,right=2.5cm,top=3.5cm,bottom=2.5cm]{geometry}%change margins
 
+\usepackage{times} %times new roman font
 \usepackage{linguex}
 
 
@@ -11,6 +11,7 @@
 \date{}
 
 \begin{document}
+
 
 Consider the following sentence:
 
@@ -22,9 +23,38 @@ Consider the following sentence:
     
 Shiny glosses!  I can refer to example \ref{ex:first} like this. %Do not put parentheses around \ref{}
 
-\exg.Fische, die Fische Fische fischen, fischen die Fische fischen.\\ %Line breaks are CRUCIAL!
-fish.\textsc{pl.nom/acc} which.\textsc{pl.nom/acc} fish.\textsc{pl.nom} fish.\textsc{fish.1/3.pres} fish.\textsc{1/3.pl.pres} fish.\textsc{1/3.pl.pres} which.\textsc{pl.nom/acc} fish.\textsc{1/3.pl.pres}\\ %Do not forget line breaks!
-`Fish which fish fish fish fish which fish fish.'
+Example \ref{ex:Turkish} is a nice sentence in Turkish.
+
+\exg.Öğretmen-ler öğrenci-ler-e iki kitap ok-ut-tu. \label{ex:Turkish}\\
+       teacher-{\sc pl.nom} student-{\sc pl-acc} two book read-{\sc caus-pst}\\ %Do not forget line breaks!
+        `The teacher made the students read two books..'
+
+
+% Consider the following sentence
+
+% \begin{exe}
+% \ex\label{ex:first} This is a sentence
+% \ex
+%     \begin{xlist}
+%     \ex[*]{Sentence a}
+%     \ex[\#]{Sentence b}
+%     \ex[]{Sentence c}
+%     \end{xlist}
+
+% \end{exe}
+
+% Shiny glosses!  I can refer to example (\ref{ex:first}) like this. %Have to put \ref{} in parentheses
+
+% Example (\ref{ex:Turkish}) is a nice sentence in Turkish.
+
+
+% \begin{exe}
+%     \ex\label{ex:Turkish}
+%         \gll 
+%       Öğretmen-ler öğrenci-ler-e iki kitap ok-ut-tu.\\
+%       teacher-{\sc pl.nom} student-{\sc pl-acc} two book read-{\sc caus-pst}\\ %Do not forget line breaks!
+%         `The teacher made the students read two books..'
+% \end{exe}
 
 
 
