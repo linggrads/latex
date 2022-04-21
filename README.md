@@ -21,7 +21,12 @@ This is a repository for linguistics-related LaTeX resources.
 
 ## Glossing packages
 
-There are three main glossing packages.  In order of difficulty, they are: ```gb4e``` ([documentation](https://ctan.math.illinois.edu/macros/latex/contrib/gb4e/gb4e-doc.pdf)), ```linguex``` ([documentation](https://texdoc.org/serve/linguex-doc.pdf/0)), and ```expex``` ([documentation](https://ctan.mirrors.hoobly.com/macros/generic/expex/expex-doc.pdf)).  Let's examine how to write the following simple examples:
+There are three main glossing packages.  In order of difficulty, they are: ```gb4e``` ([documentation](https://ctan.math.illinois.edu/macros/latex/contrib/gb4e/gb4e-doc.pdf)), ```linguex``` ([documentation](https://texdoc.org/serve/linguex-doc.pdf/0)), and ```expex``` ([documentation](https://ctan.mirrors.hoobly.com/macros/generic/expex/expex-doc.pdf)).
+
+The fundamentals of writing three-line interlinear glosses is the same in each of these three packages.  What you type is a 
+
+
+Let's examine how to write the following simple examples:
 
 ![](/ExampleFiles/Images/glosses.png)
 
