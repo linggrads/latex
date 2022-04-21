@@ -1,0 +1,153 @@
+\documentclass{beamer} %This is how you declare 
+%\documentclass[handout]{beamer} % This suppresses transitions
+
+%The following two lines will make your (You should use it with [handout] set).
+    %\usepackage{pgfpages}
+    %\pgfpagesuselayout{6 on 1}[a4paper]
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{times} %times new roman font
+\usepackage[linguistics]{forest} %For trees
+\usepackage{xcolor} %nice colors for text
+\usepackage{tipa} %for ipa
+\usepackage{soul} %for striking out text
+
+\usepackage{linguex} %glossing package
+\usepackage{lipsum} % For generating dummy text
+
+\title{How to use \texttt{beamer}}
+\author{Ian Kirby}
+\date{Spring 2022}
+
+\begin{document}
+
+
+%%%%%%% This is the first frame
+\begin{frame}{}%The {} is where you may put the title of the frame, if you want one.
+
+    \maketitle
+    
+\end{frame}
+
+
+
+%This is the second slide.
+\begin{frame}{Nice frame}
+
+    Here's what happens when write on a slide.
+    \bigskip
+
+    
+
+\end{frame}
+
+
+%This is the third frame
+\begin{frame}{Frame transitions}
+
+When you make transition text, the PDF that you generate actually includes 
+
+\begin{itemize}
+    \item<1-> This is list of items %This will appear on the first slide and those following
+    \item<2-> This an item in the list %This will appear on the second slide and those following
+    \begin{itemize}
+        \item<3-4> Hey look I hid this one!
+        \item<4-4> A nice item
+        \item<5-> Hey where'd they go?
+    \end{itemize}
+    \item<6-> Look, I brought a friend with me! %Both items will appear on slide 6
+    \item<6-> Hi, friend! 
+\end{itemize}
+
+\onslide<7->{\ex.Look, I can also do it with a gloss!}
+\onslide<8->{\ag.Sag mein-e kind-er, dass ich sie lieb-e\\
+tell.\textsc{imp} my-\textsc{pl} kid-\textsc{pl} that I them love-\textsc{pres.3sg}\\
+`Tell my children that I love them'
+}
+    
+\end{frame}
+
+
+%%%% This is the fourth frame
+
+\begin{frame}{Doing cool stuff with \texttt{\textbackslash $<$onslide<\textit{n}-$>$\{\}} and \texttt{\textbackslash only$<$\textit{n}$>$\{\}\>}}
+
+\only<1>{You can do a lot of cool stuff with \texttt{\textbackslash $<$onslide<\textit{n}-$>$\{\}} and \texttt{\textbackslash only$<$\textit{n}$>$\{\}\>}.  For example...}
+
+\only<2>{It's gone!}
+
+\onslide<2-5>{What if I wanted to have some part of my text transition to something else.  For example...}
+
+    \medskip
+
+\only<3>{We have no cats, Kathleen.}
+    \medskip 
+
+\only<4-5>{
+
+    \textbf{We have no cats, Kathleen}.\only<5>{ \textipa{[wi: h\ae v noU k\super h\ae ts k\super h\ae Tli:n]}
+    }
+    }
+    
+
+
+\end{frame}
+
+
+\begin{frame}{Here's a cool thing you can do...}
+
+
+\only<1>{\begin{forest}
+[VP
+    [{V\\have}]
+    [DP [{D\\no}]
+        [NP [{N\\cats}]]]]
+\end{forest}}
+
+\only<2>{\begin{forest}
+[VP
+    [DP [{D\\we}]]
+[V'
+    [{V\\have}]
+    [DP [{D\\no}]
+        [NP [{N\\cats}]]]]]
+\end{forest}}
+
+\only<3>{
+\begin{forest}
+[IP
+    [{},phantom]
+    [I'
+    [I]
+[VP
+    [DP [{D\\we}]]
+[V'
+    [{V\\have}]
+    [DP [{D\\no}]
+        [NP [{N\\cats}]]]]]]]
+\end{forest}
+}
+
+\only<4>{\begin{forest}
+[IP
+    [DP [{D\\we}, name={y}]]
+    [I'
+        [I]
+        [VP
+            [\st{DP} [{\st{D}\\\st{we}}, name={x}]]
+            [V'
+                [{V\\have}]
+                [DP [{D\\no}]
+                    [NP [{N\\cats}]
+                    ]]]]]]
+\draw[->] (x.west) to[bend left] (y.south);
+\end{forest}}
+
+
+    
+\end{frame}
+
+
+
+\end{document}
