@@ -7,8 +7,9 @@ This is a repository for linguistics-related LaTeX resources.  It is intended to
 # Learning LaTeX
 
 * [Wikibook for latex for linguists](https://en.wikibooks.org/wiki/LaTeX/Linguistics) - good resources, but some of the packages are a bit outdated.
-* [Overleaf](https://www.overleaf.com/) is a great website for writing and compiling in LaTeX.  While it does only run through a browser (and thus requires internet connection), it is extremely convenient for sharing documents.
-* If you code is giving errors and not compiling, try commenting parts out with ```%```.  On Overleaf, you can comment out an entire row by pressing ```CTRL /``` (```COMMAND / ``` on Mac).
+* [Overleaf](https://www.overleaf.com/) is a great website for writing and compiling in LaTeX.  While it does only run through a browser (and thus requires internet connection), it is extremely convenient for sharing documents and provides essentially all the functionality of any other options.
+    * There is also [LyX](https://www.lyx.org/), which allows you generate TeX documents in an environment more like a word processor.
+* If you code is giving errors and not compiling, try commenting parts out with ```%```.  On Overleaf, you can comment out an entire row by pressing ```CTRL```+ ```/``` (```COMMAND``` + ```/ ``` on Mac).
 * Be in the practice of consulting a package's documentation if you're running into problems with it, though some documentation is a bit obtuse.  Stackexchange and Stackoverflow are often great places to find answers to very particular questions about things you may want to do.
 * If you're not comfortable reading LaTeX code (or just dislike it on aesthetic bases), Overleaf has a Rich Text mode that automatically renders some of your code into more readable text.  It also has windows
     * Source code:<br><center><img src="ExampleFiles/Images/source.png" style="width:90%;height:90%"/></center>
@@ -265,6 +266,7 @@ Other examples:
 
 ```\usepackage{tipa}``` is the gold standard for typing IPA ([tipa code table](https://jon.dehdari.org/tutorials/tipachart_mod.pdf))
 
+
 ## Semantics 
 
 Undoubtably, all semanticists use these packages:
@@ -283,6 +285,11 @@ Other things that are more personal taste are the following:
 \usepackage{cancel} %Gives you the command \cancel{} for striking things out
 ```
 
+## Trees
+
+Like glosses, there are a lot of different tree packages.  The most straightforward is ```qtree```, which can be integrated into more advanced ```tikz``` functionality with ```\usepackage{tikz-qtree-compat}```.  For linguists, the most useful package is ```forest```, particularly ```\usepackage[linguistics]{forest}``` ([Documentation](https://mirrors.concertpass.com/tex-archive/graphics/pgf/contrib/forest/forest-doc.pdf))
+
+* Examples of ```forest``` can be seen in handout from the 2022 LaTeX workshop [[PDF](/ExampleFiles/2022_Workshop_linguex_ipa_diacritics_trees_tableaux.pdf), [TeX](/ExampleFiles/2022_Workshop_linguex_ipa_diacritics_trees_tableaux.tex)]
 
 # Useful macros
 
