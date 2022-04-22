@@ -1,0 +1,365 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry} %For setting margins of 1 inch on each size (2.5cm = 1 inch)
+
+\usepackage{amsmath} % Math and logic symbols
+\usepackage{amssymb} % More math and logic symbols, including \varnothing
+\usepackage{fontspec} % Use fonts other than default
+\usepackage{titling} % Change space above title
+\usepackage{tipa} % IPA
+\usepackage[linguistics]{forest} % Trees - make sure to use with the [linguistics] setting!
+\usepackage{linguex} % Glossing package
+\usepackage{hyperref} % Links - n.B. this makes your references and labels be links too
+
+\hypersetup{ % Configure hyperref to something reasonable
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black,
+    }
+
+\setmainfont{TeX Gyre Termes} % Set the font here (casing matters)
+
+\setlength{\droptitle}{-1.5cm} % Less whitespace above the title (is about 1/4 page otherwise)
+
+
+\title{LaTeX Workshop Handout}
+\author{Ian Kirby and Hayley Ross}
+\date{22nd April 2022}
+
+\begin{document}
+
+\maketitle
+
+We have created a GitHub repository for examples of additional things. \href{https://github.com/linggrads/latex}{https://github.com/linggrads/latex}
+
+\tableofcontents %Wow, cool, it makes a table of contents for your sections!
+
+
+
+\section{Glossing and examples using linguex}
+
+A straightforward glossing package is \texttt{linguex}, which has four basic commands: \texttt{\textbackslash ex.} which starts an example, \texttt{\textbackslash a.} which declares the first sublist of an example, and \texttt{\textbackslash z.} which tells linguex you're done with the sublist. \texttt{\textbackslash b.}, which declares another sublist.%Note: I type \textbackslash rather than actually entering \ in order to avoid invoking the packages.
+
+\ex. Here is an example\label{ex:first}
+	\a. Here is a sub example\label{ex:sub}
+	
+In \ref{ex:first} we see an example which has one sub-example \ref{ex:sub}.
+
+%IF you don't like (1-a), put this command in your preamble: \renewcommand{\firstrefdash}{}
+
+Three-line glosses are straightforward: you delimit words/units by spaces in the top two lines:
+
+\exg.Mein Vater war Stierk\"ampfer \label{german bullfighter}\\ %These line breaks are crucial for glosses!
+my father was bullfighter\\
+`My father was a bullfighter'
+
+\exg.Der Empfang wurde vom B\"{u}rgermeister er\"{o}ffn-et.\\ %Note that you don't have to put braces around \"{o}, could also type \"o.  This is personal preference
+The reception be.{\sc pst.3sg} from.{\sc the.dat} mayor open-{\sc ptpl}\\
+`The reception was opened by the mayor'
+
+\ex.Sakha wh-\textit{daghany} indefinites\label{sah:1}
+\a.\label{sah:1a}
+    \ag.Min tugu daghany aax-pa-ty-m\label{sah:1ai}\\
+    I what.\textsc{acc} \textsc{ptcl} read-\textsc{neg-pst-1sg}\\
+    `I did not read anything'
+    \bg.*Min tugu daghany aax-ty-m\label{sah:1aii}\\
+    I what.\textsc{acc} \textsc{ptcl} read-\textsc{pst-1sg}\\
+    `*I read anything'
+    \z. % \z. says to go back out one level of embedding.
+\bg.Min tugu daghany aax-*(pa)-ty-m\label{sah:1b}\\
+I what.{\sc acc} {\sc ptcl} read-{\sc (neg)-pst-1sg}\\
+`I didn't read anything'
+\b.Perhaps you want to gloss two words with one thing... (e.g. \ref{sah:1a}-\ref{sah:1b} and you want to \textit{tugu daghany} simply as `anything'. You indicate this by putting the two words in braces \{\}:
+    \ag.Min {tugu daghany} aax-pa-ty-m \textbf{versus} Min tugu daghany aax-pa-ty-m\\
+    I anything.{\sc acc} read-{\sc neg-pst-1sg} { } I anything.{\sc acc} read-{\sc neg-pst-1sg}\\
+    \z.
+
+
+\ex.There are many reasons to use \LaTeX
+    \a.It looks really nice
+    \b.You can format symbols very easily:
+        \a. $\lambda x\in D_e \, \forall x [human(x)\rightarrow mortal(x)]$
+        \b. $\underbrace{\neg (p\wedge \neg q)}_{(p\rightarrow q)}$
+        \z. %\z. Tells linguex that you are out of the subitems
+    \b.\begin{tabular}[t]{l|ll} %for a tabular
+            & \textsc{sg}   &   \textsc{pl}\\\hline 
+        1   & I             &   we \\
+        2   & \multicolumn{2}{c}{you}\\
+        3   & he,           & they\\
+            & she           & \\
+            & it            & \\
+    \end{tabular}
+
+You can make further levels of embeddings, but there will be no label tags below the third level:
+
+\ex.Level 1
+\a.Level 2
+    \a.Level 3
+        \a.Level 4
+            \a.Level 5
+            \z. 
+        \z.
+    \b.Level 3
+    \z. 
+\b.Level 2
+
+
+
+
+\subsection{Avoiding \texttt{linguex} common errors}
+
+There are a few good habits that can help you avoid common errors with linguex.
+
+\subsubsection{Forgetting line breaks in interlinear glosses:}
+
+Whenever you type a gloss, I would advise that you just type this first.
+
+\begin{tabular}{ll} %Note that I'm using a tabular to keep things lined up for the PDF.  Do not copy this code!
+    \texttt{\textbackslash exg.} & \textbackslash\textbackslash\\
+    & \textbackslash\textbackslash \\ 
+    \end{tabular}
+
+    
+If you do not put the line breaks, your gloss will not show up and it will treat the entire rest of the document as part of the same example, and often it will not compile.  Uncomment the following examples... to see what happens if you forget it.
+
+%%These three will all give you the same error:  it doesn't treats the entire rest of the document as part of the example.
+
+%%First
+% \exg.I forgot my second line break\\ 
+% I forgot my second line break
+% `I forgot my second line break'
+
+% %Second
+% \exg.I forgot my top line break
+% I forgot my top line break\\
+% `I forgot my top line break'
+
+%%Third
+% \exg. I forgot both line breaks
+% I forgot both line breaks
+% `I forgot both line break'
+
+
+%%fourth
+% \ex.
+%     \ag.Sub item gloss
+%     Sub item gloss 
+%     `sub item gloss'
+%     \b.Hey hey hey
+
+\subsubsection{Don't use any letter past b for subitems}
+
+You \textit{can} actually use \texttt{\textbackslash c.} instead of two consecutive \texttt{\textbackslash b.}, but you cannot go past f.
+
+\ex.Here I've labeled a through i, each with unique labels.
+    \a.Item a
+    \b.Item b
+    \c.Item c
+    \d.Item d
+    \e.Item e
+    \f.Item f
+    \g.Item g
+    \h.Item h
+    \i.Item i
+    
+\ex.Here I've labeled a through i, but with every non-initial item being b:
+    \a.Item a
+    \b.Item b
+    \b.Item c
+    \b.Item d
+    \b.Item e
+    \b.Item f
+    \b.Item g
+    \b.Item h
+    \b.Item i
+
+\subsubsection{Be careful of the labels and judgment symbols}
+
+In \ref{yo:1}, we see that the typically used grammaticality symbols in a sub-list of examples are aligned, and the first word in the examples are also aligned.
+
+\ex.\label{yo:1}
+    \a.This sentence is grammatical.
+    \b.* This sentence aren't grammatical.
+    \b.\# Colorless ideas sleep furiously.
+    \b.?? This an odd sentence is.
+    \b.? This sentence ok?
+
+Be careful with the spacing for where you put the label.  If it's on the left, it's easy to throw off the alignment for your judgment symbols
+
+\ex.\label{yo:2}
+    \a.This work and keep the judgment symbols aligned!
+        \a.Good sentence!\label{good:1}%no spaces, at the end
+        \b.\#Infelicitous \label{good:2} %space at the end.  all good!
+        \b.?\label{good:3}Not great not terrible %no spaces, left side 
+        \b.?? \label{good:4}Not so good %one space after jdgmnt symbol
+        \b.* Very bad\label{good:5} example %Yes, you CAN put it in the middle, but you really shouldn't (it messes up interlinear glosses)
+        \z.
+    \b.These placements throw off the alignment
+        \a.Good sentence!\label{bad:1} %proper placement 
+        \b.\label{bad:2}\#Infelicitous %Do not put label before judgment symbol
+        \b.?\label{bad:3} Not great, not terrible %label after symbol, but space after label (it puts the symbol in the right spot, but adds a space.  Will throw off three-line glosses!)
+        \b.{??}Not so good %Regardless of where you put the label, do not put symbols in braces!
+        \b.[*]{Very bad example} %do not do this (this is gb4e syntax)
+        \z.
+
+\section{IPA and commonly orthographic symbols}
+
+Latex has a lot of built in commands for characters that are not available on your keyboard.  For example...
+
+\ex.\ae~ \aa~ \oe~ \textthorn~ \textwynn~ \i~ \o~
+
+
+
+%Notice the symbol~ after the characters: this is a way of delimiting the scope of the command.  This is because using these commands requires a following space.  If we didn't include it, they symbols will all be right next to each other.
+
+\ex.\ae \aa \oe \textthorn \textwynn \i \o
+
+In actual words, you need a way of delimiting the space. this:  e.g. K{\o}benhavn versus K\obenhavn
+
+% You can also put two spaces after the command (This won't work for three-line glosses though!)
+
+% \ex.\ae  \aa \oe  \textthorn  \textwynn  \i  \o
+
+% % You can also put the symbol in braces:
+% \ex.{\ae} {\aa} {\oe} {\textthorn} {\textwynn} {\i} {\o}
+
+\subsection{Diacritics}
+
+\ex.\"a \'a \'s \`a \~a \H{a} \s{a} \c{c} \u{g} \v{s} 
+
+
+% % \", \' , \`, \~ do not require braces around the character following. But if you want multiple symbols on the same character, they're required:
+% \'{\s{s}} versus \'\s{s}
+
+\subsection{IPA}
+
+\texttt{\textbackslash usepackage\{tipa\}} is the gold standard for typing IPA.  This gives you the \texttt{\textbackslash textipa\{\}} function.
+
+\begin{itemize} %I am making a bullet point list.
+    \item \href{https://jon.dehdari.org/tutorials/tipachart_mod.pdf}{Chart for the various different symbols}
+    \item \href{https://www.tug.org/tugboat/tb17-2/tb51rei.pdf}{documentation}
+\end{itemize}
+
+
+\ex.
+\a.Please call Stella and ask her to bring those sticks of butter with her from the store.
+\b.\textipa{/pli:z kal "stE.l@ {\ae}nd {\ae}sk h{\textrhookschwa} tu brIN DoUz stIks 2v "b2t.\s{r} wIT h{\textrhookschwa} fr2m Di stOr/}
+\b.\textipa{[p\super hli:z kal "st\super he.l@ \ae sk {\textrhookschwa} t@ br\~IN DoUz st\super hIks @ "b2R.\s{r} wID {\textrhookschwa} fr\~@m D@ stOr]}
+
+\section{Trees}
+
+\ex. this black cat
+
+%TODO Build this tree live during the workshop
+\ex.\begin{forest}
+[DP,baseline  % baseline tells linguex to align the tree with the label
+]
+\end{forest}
+
+\newpage
+
+\ex.\scalebox{0.85}{ % Use a value < 1 here if your tree is too big to fit on the page
+\begin{forest}
+for tree={
+	    l sep=0.2cm, % vertical
+%	    s sep=0.2cm % horizontal
+}
+[CP
+	[C'
+		[C
+			[$\varnothing$]
+		]
+		[TP
+			[DP$_j$
+				[D[you, roof, name=you]]
+			]
+			[T'
+				[T
+					[T[$\varnothing$]]
+					[Mod$_i$[should, name=should]]
+				]
+				[ModP
+					[Mod'
+						[$t_i$, name=ti]
+						[vP
+							[$t_j$, name=tj]
+							[v'
+								[v
+									[v[$\varnothing$]]
+									[V$_k$[refrain, name=refrain]]
+								]
+								[VP
+									[V'
+										[$t_k$, name=tk]
+										[PP
+											[P'
+												[P[from]]
+[vP
+	[vP
+		[DP
+			[D[PRO]]
+		]
+		[v'
+			[v
+				[v[$\varnothing$]]
+				[V$_\ell$[teasing, name=teasing]]
+			]
+			[VP
+				[V'
+					[$t_\ell$, name=tl]
+					[DP
+						[D'
+							[D[a]]
+							[NP
+								[AdjP
+									[Adj[nice, roof]]
+								]
+								[N[man]]
+							]
+						]
+					]
+				]
+			]
+		]
+	]
+	[PP
+		[P[like]]
+		[DP
+			[D[that]]
+		]
+	]
+]
+											]
+										]
+									]
+								]
+							]
+						]
+					]
+				]
+			]
+		]
+	]
+]
+% Name all the nodes that you want to draw arrows from, then use the names here
+\draw[->] (ti) to[out=south, in=south] (should);
+\draw[->] (tj) to[out=south west, in=south] (you);
+\draw[->] (tk) to[out=south, in=south] (refrain);
+\draw[->] (tl) to[out=south, in=south] (teasing);
+\end{forest}
+}
+
+\newpage
+
+\section{Tableaux}
+
+Kevin Ryan has made a lovely tableau generator! Go to \url{https://meluhha.com/tableau/} and enter your tableau.
+
+% /cat-z/ | Agree | Ident(voice) | *\textipa{\r*{\*C}}
+% [cats]  |       | *            |
+% [cadz]  |       | *            | *
+% [catz]  | *     | *            | *
+% [cadz]  | *     | *            | *
+
+\end{document}

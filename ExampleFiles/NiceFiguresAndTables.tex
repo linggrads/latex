@@ -1,0 +1,738 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+
+\newcommand{\xmark}{\ding{55} }
+\newcommand{\strt}{\noindent{$\bullet$} }
+\newcommand{\op}[2]{\ensuremath{\langle #1,#2\rangle}}
+
+\renewcommand{\firstrefdash}{}
+\usepackage{verbatim}
+\usepackage{listings}
+
+\usepackage[colorlinks=true, linkcolor={blue!190},citecolor=black]{hyperref}
+
+
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}  %gives you llbracket and rrbracket
+\usepackage{mathastext} %Prevents math mode from italicizing
+\usepackage{mathtools}
+\usepackage{adjustbox}
+\usepackage{tipa}
+\usepackage{graphicx}
+
+\usepackage{pifont} %\ding{43} for pointer finger
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{tikz-qtree-compat}
+\usetikzlibrary{shapes.misc,shadows}
+\usepackage[linguistics]{forest}
+    \forestset{
+    sn edges/.style={for tree = {parent anchor=children, child anchor=parent}}}
+\usepackage{arydshln}    %for dashed lines
+\usepackage{rotating}    %for angled text
+\usepackage{geometry}
+    \geometry{left=1in,right=1in,top=1in,bottom=1in}
+\usepackage{multicol}
+\usepackage{setspace}
+\frenchspacing
+\usepackage{multirow}
+\usepackage{dingbat}
+\usepackage{fancyhdr}
+    \fancyhf{}
+    \lhead{}
+\usepackage{diagbox}
+\usepackage{natbib}
+    \setcitestyle{comma,aysep={},yysep={,},notesep={: }}
+\usepackage{soul}
+
+\usepackage{linguex}
+\usepackage{float}
+
+\usepackage{soul}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+\title{neat figures}
+\author{Ian Kirby}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Basics of making tables}
+
+
+
+\subsection{Specifying width}
+
+\strt Let's pretend you want to create a table that included tongue twisters from different languages.
+
+\ex.
+\a.English\\\textit{She sells sea-shells by the sea-shore}
+\b.Swedish\\Sju sjösjuka sjömän sköttes av sju sköna sjuksköterskor\\`Seven seasick sailors were cared for by seven beautiful nurses'
+\b.Mandarin\\ sì shì sì, shí shì shí, shísì shì shísì, sìshí shì sìshí\\`Four is four, ten is ten, fourteen is fourteen, forty is forty.' 
+
+
+\strt Say you wanted to include this in a table with three cells: Language, Example, and English Translation.  If we put the above examples in a tabular with the default width comment \texttt{\textbackslash begin\{tabular\}\{lll\}...}, we will have the following:
+
+
+\bigskip 
+
+\begin{tabular}{lll}
+    \hline Language & Example & Translation\\\hline 
+    English & She sells sea-shells by the sea-shore. & \\\hline
+    Swedish & Sju sjösjuka sjömän sköttes av sju sköna sjuksköterskor & `Seven seasick sailors were cared for by seven beautiful nurses'\\\hline 
+    Mandarin & sì shì sì, shí shì shí, shísì shì shísì, sìshí shì sìshí & `Four is four, ten is ten, fourteen is fourteen, forty is forty.' \\\hline 
+\end{tabular}
+
+\bigskip 
+
+\strt This is because the parameters \texttt{c,r,l} automatically adjust the width of the cell based on the length of what is inside of them.  In order to include line-breaks in a tabular, we have to use another parameter and specify the width (in inches or centimeters).  In the default tabular suite in LaTeX, there are three column types that can be specified.
+
+\begin{itemize}
+    \item[] \texttt{p\{x\}} : top-aligned cells with width of x
+    \item[] \texttt{m\{x\}} : middle-aligned cells with width of x
+    \item[] \texttt{b\{x\}} : bottom-aligned cells with width of x
+\end{itemize}
+
+\strt Let's go go with the following measurements: \texttt{Row 1} is 2cm, \texttt{Row 2} is 6cm, \texttt{Row 3} is 6cm.  The skeleton for our table looks like the following:
+
+\bigskip 
+
+
+\begin{lstlisting}[breaklines]
+
+\begin{tabular}{p{2cm} p{6cm} p{6cm}}
+\hline Language    & Example & Translation\\\hline 
+     &  & \\\hline 
+     &  & \\\hline 
+     &  & \\\hline 
+\end{tabular}
+
+\end{lstlisting}
+
+\bigskip 
+
+\strt Notably, this doesn't actually require the cells to be filled to stretch out the cells to this width.  The code above will produce the following:
+
+\bigskip 
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{p{2cm} p{6cm} p{6cm}}
+\hline Language    & Example & Translation\\\hline 
+     &  & \\\hline 
+     &  & \\\hline 
+     &  & \\\hline 
+\end{tabular}
+\end{table}
+
+\bigskip
+
+\strt When we actually include our tongue twisters, it produces the following:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{p{2cm} p{6cm} p{6cm}}
+    \hline Language & Example & Translation\\\hline 
+    English & She sells sea-shells by the sea-shore. & \\\hline
+    Swedish & Sju sjösjuka sjömän sköttes av sju sköna sjuksköterskor & `Seven seasick sailors were cared for by seven beautiful nurses'\\\hline 
+    Mandarin & sì shì sì, shí shì shí, shísì shì shísì, sìshí shì sìshí & `Four is four, ten is ten, fourteen is fourteen, forty is forty.' \\\hline 
+\end{tabular}
+\end{table}
+
+\pagebreak
+
+\section{More advanced table stuff}
+
+\subsection{Combining columns: \texttt{\textbackslash multicolumn\{\}\{\}\{\}}}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|r|l|l|}
+\hline  \backslashbox{Person}{Number}   & SG & PL \\\hline
+1 & I           & we \\\hline 
+2 & you         & you \\\hline 
+3 & he, she, it & they\\\hline
+\end{tabular}
+\caption{English nominative personal pronouns}
+\label{English pronouns 1}
+\end{table}
+
+\medskip 
+
+\strt We will return to \textit{they} below once we examine how to combine columns. For now, let's focus on the second person pronoun \textit{you.}  
+
+[finish description]
+
+\medskip 
+
+\begin{lstlisting}[breaklines]
+\begin{tabular}{|r|l|l|}
+\hline  \backslashbox{Person}{Number}   & SG & PL \\\hline
+1 & I           & we \\\hline 
+2 & you         & you \\\hline 
+3 & he, she, it & they\\\hline
+\end{tabular}
+\end{lstlisting}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|r|c|c|}
+    \hline  \backslashbox{Person}{Number}   & SG & PL \\\hline
+        1 & I & we \\\hline 
+        2 & \multicolumn{2}{c|}{you}\\\hline 
+        3 & he, she, they, it & they\\\hline 
+        % 3.FEM & she & \\\hline 
+        % 3.INANIM & it & \\\hline 
+    \end{tabular}
+    \caption{English nominative personal pronouns}
+    \label{English pronouns 2}
+\end{table}
+
+\begin{lstlisting}[breaklines]
+
+\begin{tabular}{|r|c|c|}
+\hline  \backslashbox{Person}{Number}   & SG & PL \\\hline
+    1 & I & we \\\hline 
+    2 & \multicolumn{2}{c|}{you}\\\hline 
+    3 & he, she, they, it & they\\\hline 
+\end{tabular}    
+
+\end{lstlisting}
+
+
+\bigskip 
+
+ 
+\strt You may be a bit bothered that the columns in Table \ref{English pronouns 2} do not have the same width.  This is because the parameters \texttt{c,r,l} automatically adjust the width of the cell based on the length of what is inside of them.  In order to include line-breaks in a tabular, we have to use another parameter and specify the width (in inches or centimeters), as discussed in \S[WHERE]
+
+
+
+\strt Let's go with middle-aligned cells with width of 2cm.  First, we will change all the cells to 2cm, as in the following:
+
+\begin{lstlisting}[breaklines]
+
+\begin{tabular}{|m{2cm}|m{2cm}|m{2cm}|}
+\hline  \backslashbox{Person}{Number}   & SG & PL \\\hline
+1 & I           & we \\\hline 
+2 & you         & you \\\hline 
+3 & he, she, it & they\\\hline
+\end{tabular}
+
+\end{lstlisting}
+
+\bigskip 
+
+\strt This produces the following:
+
+\bigskip 
+\begin{table}[H]
+    \centering
+\begin{tabular}{|m{2cm}|m{2cm}|m{2cm}|}
+\hline  \backslashbox{Person}{Number}   & SG & PL \\\hline
+1 & I           & we \\\hline 
+2 & you         & you \\\hline 
+3 & he, she, it & they\\\hline
+\end{tabular}
+\end{table}
+
+\bigskip 
+
+\strt Oops!  In order to avoid this, we could either specify a greater width for row 1 or just leave it as automatically width.  We'll go with the latter (i.e. replace the first \texttt{m\{2cm\}} with \texttt{r}.
+
+\bigskip 
+
+
+\begin{lstlisting}[breaklines]
+
+\begin{tabular}{|r|m{2cm}|m{2cm}|}
+\hline  \backslashbox{Person}{Number}   & SG & PL \\\hline
+1 & I           & we \\\hline 
+2 & you         & you \\\hline 
+3 & he, she, it & they\\\hline
+\end{tabular}
+
+\end{lstlisting}
+
+\bigskip 
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{|r|m{2cm}|m{2cm}|}
+\hline  \backslashbox{Person}{Number}   & SG & PL \\\hline
+1 & I           & we \\\hline 
+2 & you         & you \\\hline 
+3 & he, she, it & they\\\hline
+\end{tabular}
+\end{table}
+
+\pagebreak
+
+
+
+
+
+\subsection{Combining columns: \texttt{\textbackslash multirow\{\}\{\}\{\}}}
+
+
+
+\strt Let's take an example where it makes sense to combine columns.  In Table \ref{Evenki 1}, we see the personal pronouns of Evenki.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|r|l|l|}
+\multicolumn{1}{l}{}& \multicolumn{1}{l}{\texttt{Row A}} & \multicolumn{1}{l}{\texttt{Row B}} & \multicolumn{1}{l}{\texttt{Row C}}\\
+ \cline{2-4}  \texttt{Col 1} &   & SG & PL  \\\cline{2-4}
+    \texttt{Col 2} & 1.EXCL & bi & bu \\\cline{2-4}
+    \texttt{Col 3} & 1.INCL & & mit\\\cline{2-4}
+    \texttt{Col 4} & 2 & si & su \\\cline{2-4}
+    \texttt{Col 5} & 3 & nungan & nungartyn\\\cline{2-4}
+    \end{tabular}
+    \caption{Evenki Personal Pronouns}
+    \label{Evenki 1}
+\end{table}
+
+\strt Writing this table is straightforward enough, using the following code:
+
+\begin{lstlisting}[breaklines]
+
+\begin{tabular}{|r|l|l|}
+    \hline      &   SG      &       PL  \\ \hline
+    1.EXCL      &   bi      &       bu  \\ \hline
+    1.INCL      &           &       mit \\ \hline
+    2           &   si      &       su  \\ \hline 
+    3           & nungan    & nungartyn \\ \hline
+\end{tabular}
+
+\end{lstlisting}
+
+\strt There is a problem with Table \ref{Evenki 1}, which is the emptiness \texttt{Cell B3}.  This looks as if it \textit{could} be filled (in another language), and further, as if Evenki has no way to express \textsc{1sg.incl}.  But NO language has a way to express this!  This is a situation where it makes a lot of sense to combine columns.
+
+\strt Combining columns in cells requires the \texttt{multirow} package, which works similarly to the \texttt{multicol} package discussed above.
+
+\strt The relevant command is  \texttt{\textbackslash multirow\{I\}\{II\}\{III\}}, a function which takes three parameters: \texttt{I}$=$number of rows, \texttt{II}$=$width, \texttt{III}$=$text to be included.  The reelvant command is:
+
+\medskip
+
+\noindent \texttt{\textbackslash multirow\{2\}\{*\}\{bi\}}
+
+\medskip
+
+\strt `\texttt{2}' indicates that we want it to span 2 rows.  `\texttt{*}' essentially means ``use the default cell width.''  `\texttt{bi}' is the contents of the cell.
+
+\strt We put this in the same place in the code as \textit{bi} above.  This will look like this:
+
+
+\begin{lstlisting}[breaklines]
+
+\begin{tabular}{|r|l|l|}
+    \hline      &   SG                      &       PL  \\ \hline
+    1.EXCL      &   \multirow{2}{*}{bi}     &       bu  \\ \hline
+    1.INCL      &                           &       mit \\ \hline
+    2           &   si                      &       su  \\ \hline 
+    3           & nungan                    & nungartyn \\ \hline
+\end{tabular}
+
+\end{lstlisting}
+
+
+\strt This code produces Table \ref{Evenki 2}:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|r|l|l|}
+\multicolumn{1}{l}{}& \multicolumn{1}{l}{\texttt{Row A}} & \multicolumn{1}{l}{\texttt{Row B}} & \multicolumn{1}{l}{\texttt{Row C}}\\
+ \cline{2-4}  \texttt{Col 1} &   & SG & PL  \\\cline{2-4}
+    \texttt{Col 2} & 1.EXCL & \multirow{2}{*}{bi} & bu \\\cline{2-4}
+    \texttt{Col 3} & 1.INCL & & mit\\\cline{2-4}
+    \texttt{Col 4} & 2 & si & su \\\cline{2-4}
+    \texttt{Col 5} & 3 & nungan & nungartyn\\\cline{2-4}
+    \end{tabular}
+    \caption{Evenki Personal Pronouns with 1.SG combined }
+    \label{Evenki 2}
+\end{table}
+
+\strt But wait!  Now the \texttt{\textbackslash hline} between columns 2 and 3 is going through the cell contents.  To avoid this, we need to be more specific in the span of the lines, to make sure it does not span through Row B.  This is done by replacing \texttt{\textbackslash hline} with \texttt{\textbackslash cline\{x-y\}}, where \texttt{x} is the row number for the start of the line and \texttt{y} is the row number for the end of the line.
+
+\strt \textbf{NOTE} that for \texttt{\textbackslash cline\{x-y\}}, BOTH VALUES ARE REQUIRED.  This means for our task, to avoid cutting through cell B3, we have to draw two lines: one spanning Row A and one spanning Row B.  Because both values are required, this looks like the following:  \texttt{\textbackslash cline\{1-1\} \textbackslash cline\{3-3\}}.  Meaning: ``draw one line that spans from Row 1 ($=$what I have labeled Row A) through Row 1,  and draw one line that spans from Row 3 to Row 3.''
+
+
+\begin{lstlisting}[breaklines]
+
+\begin{tabular}{|r|l|l|}
+    \hline      &   SG                  &       PL  \\ \hline
+    1.EXCL      &   \multirow{2}{*}{bi} &       bu  \\ \cline{1-1} \cline{3-3}
+    1.INCL      &                       &       mit \\ \hline
+    2           &   si                  &       su  \\ \hline 
+    3           & nungan                & nungartyn \\ \hline
+\end{tabular}
+
+\end{lstlisting}
+
+
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|r|l|l|}
+\multicolumn{1}{l}{}& \multicolumn{1}{l}{\texttt{Row A}} & \multicolumn{1}{l}{\texttt{Row B}} & \multicolumn{1}{l}{\texttt{Row C}}\\
+ \cline{2-4}  \texttt{Col 1} &   & SG & PL  \\\cline{2-4}
+    \texttt{Col 2} & 1.EXCL & \multirow{2}{*}{bi} & bu \\\cline{2-2}\cline{4-4}
+    \texttt{Col 3} & 1.INCL &  & mit\\\cline{2-4}
+    \texttt{Col 4} & 2 & si & su \\\cline{2-4}
+    \texttt{Col 5} & 3 & nungan & nungartyn\\\cline{2-4}
+    \end{tabular}
+    \caption{Evenki Personal Pronouns with 1.SG combined }
+    \label{Evenki 2}
+\end{table}
+
+
+\pagebreak 
+
+\subsection{Combining \texttt{multirow} and \texttt{multicolumn}}
+
+\strt Like \texttt{\textbackslash multicolumn\{\}\{\}\{\}}, you can produce some really sophisticated figures with \texttt{\textbackslash multirow}, and even more complex and elegant figures when you use both.
+
+\strt Let's return to the English personal pronouns we left off in Table \ref{English pronouns 2}.  If we add in $\pm$animate, and, masculine, and feminine as features for third-person pronouns, we now have \textit{they} appearing in 5 cells:
+
+\bigskip 
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|m{2cm}|m{2cm}|}
+\hline   \backslashbox{Pers, Gen}{Number} & SG & PL  \\\hline 
+1                   &         I     & we\\\hline 
+2                   & \multicolumn{2}{c|}{you}\\\hline 
+3, +animate, masc.  & he            & they \cellcolor{cyan!25}\\\hline 
+3, +animate, fem.   & she           & they\cellcolor{cyan!25}\\\hline 
+3, -animate         & it            & they\cellcolor{cyan!25} \\\hline 
+3                   & they  \cellcolor{cyan!25}        & they\cellcolor{cyan!25} \\\hline 
+\end{tabular}
+\caption{Revised English third-person pronouns}
+    \label{revis eng pronouns}
+\end{table}
+
+
+
+\bigskip 
+
+\strt How can we reduce L-shaped cyan cells in Table \ref{revis eng pronouns}?  A little magic...
+
+\strt First we need to pick a cell that we want our single \textit{they} to appear in.  There are really good places to put it: either in the plural column (as in Table \ref{english pronouns route 1}) or centered between singular and plural in the bottow row (as in Table \ref{english pronouns route 2}).  Note that in the following, I have reduced a lot to get the to fit on the same line.
+
+\begin{multicols}{2}
+
+
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|m{1.5cm}|m{1.5cm}|}
+\hline   \backslashbox{Pers, Gen}{Number} & SG & PL  \\\hline 
+1                   &         I     & we\\\hline 
+2                   & \multicolumn{2}{c|}{you}\\\hline 
+3, +anim, msc.  & he            &  \multirow{4}{*}{they}     \\\cline{1-2}
+3, +anim, f.   & she           &       \\\cline{1-2}
+3, -anim         & it            &       \\\cline{1-2}
+3                   & \multicolumn{1}{l}{}  &       \\\hline 
+\end{tabular}
+    \caption{Route 1}
+    \label{english pronouns route 1}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|m{1.5cm}|m{1.5cm}|}
+\hline   \backslashbox{Pers, Gen}{Number} & SG & PL  \\\hline 
+1                   &         I     & we\\\hline 
+2                   & \multicolumn{2}{c|}{you}\\\hline 
+3, +anim, msc.  & he            &           \\ \cline{1-2}
+3, +anim, f.   & she           &           \\ \cline{1-2}
+3, -anim         & it            &           \\ \cline{1-2}
+3                   & \multicolumn{2}{c|}{they}             \\\hline 
+\end{tabular}
+    \caption{Route 2}
+    \label{english pronouns route 2}
+\end{table}
+
+\end{multicols}
+
+\bigskip 
+
+\strt Let's focus on only the third-person cells.  Here's how to do it...
+
+\strt Here is the code for Route 1 (tab. \ref{english pronouns route 1}):
+
+\bigskip 
+
+
+\begin{verbatim}
+\begin{tabular}{|l|m{1.5cm}|m{1.5cm}|}
+3, +anim, msc.  & he                    & \multirow{4}{*}{they} \\\cline{1-2}
+3, +anim, f.    & she                   &       \\ \cline{1-2}
+3, -anim        & it                    &       \\ \cline{1-2}
+3               & \multicolumn{1}{l}{}  &       \\ \hline
+\end{tabular}
+    \end{verbatim}
+
+\bigskip
+
+\strt There are three main changes: first, put a \texttt{\textbackslash multirow...} for the bottom four columns in the Plural column.  Next, we change the \texttt{\textbackslash hline} to \texttt{\textbackslash cline{1-2}} in those rows affected by \texttt{\textbackslash multirow}.  Finally, add \texttt{\textbackslash multicolumn\{1\}\{l\}\{\}} to the bottom \textsc{3sg} cell.  This is done in order to get ride of the middle line break.
+
+\strt Route 2 (Table \ref{english pronouns route 2}) is similar, with the difference being that we put \textit{they} in a \texttt{\textbackslash multicolumn} rather than in a \texttt{\textbackslash multirow}:
+
+    
+\begin{verbatim}
+\begin{tabular}{|l|m{1.5cm}|m{1.5cm}|}
+3, +anim, msc.  & he            &           \\ \cline{1-2}
+3, +anim, f.    & she           &           \\ \cline{1-2}
+3, -anim        & it            &           \\ \cline{1-2}
+3               & \multicolumn{2}{c|}{they}             \\\hline 
+\end{tabular}
+\end{verbatim}
+
+\bigskip 
+
+
+
+
+
+\bigskip 
+
+
+\bigskip 
+
+\subsubsection{Ukrainian Noun declensions}
+
+
+
+
+
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|r|C{1cm}|C{1cm}|C{1cm}|C{1cm}||C{1cm}|C{1cm}|C{1cm}|C{1cm}|}
+\hline Declension class & \multicolumn{4}{L{4cm}||}{First declension} & \multicolumn{4}{L{4cm}|}{Second declension} \\\cline{2-9}
+Number & \multicolumn{2}{C{2cm}|}{SG} & \multicolumn{2}{C{2cm}||}{PL} &\multicolumn{2}{C{2cm}|}{SG} & \multicolumn{2}{C{2cm}|}{PL}  \\\cline{2-9}
+\multicolumn{1}{|l|}{Case$\downarrow$, animacy$\rightarrow$} & $-$ & $+$ & $-$ & $+$ & $-$ & $+$ & $-$ & $+$  \\\hline
+\multicolumn{1}{|l|}{Nominative} & \multicolumn{2}{c|}{-a} & \multicolumn{2}{c||}{-y} & \multicolumn{2}{c|}{$\varnothing$} & \multicolumn{2}{c|}{-y} \\\cline{1-3} \cline{5-5} \cline{7-7} \cline{9-9}
+\multicolumn{1}{|l|}{Accusative} & \multicolumn{2}{c|}{-u} & & & &  & & \\\cline{1-4}\cline{6-6} \cline{8-8} 
+\multicolumn{1}{|l|}{Genitive} & \multicolumn{2}{c|}{-y} & \multicolumn{2}{c||}{$\varnothing$} & \multicolumn{2}{c|}{-a} & \multicolumn{2}{c|}{-jiv}\\\hline
+\multicolumn{1}{|l|}{Dative} & \multicolumn{2}{c|}{\multirow{2}{*}{-i}} & \multicolumn{2}{c||}{-am} & \multicolumn{2}{c|}{\multirow{2}{*}{-ovi}} & \multicolumn{2}{c|}{-am} \\\cline{1-1}\cline{4-5} \cline{8-9}
+\multicolumn{1}{|l|}{Locative} & \multicolumn{2}{c|}{} & \multicolumn{2}{c||}{-ax} & \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{-ax}  \\\hline
+\multicolumn{1}{|l|}{Instrumental} & \multicolumn{2}{c|}{-oju} & \multicolumn{2}{c||}{-amy} & \multicolumn{2}{c|}{-om} & \multicolumn{2}{c|}{-amy} \\\hline 
+    \end{tabular}
+    \caption{Some noun declension classes from Ukrainian}
+    \label{Ukrainian 1}
+\end{table}
+
+\bigskip
+
+
+
+
+\pagebreak
+
+\subsection{Assorted tables}
+
+
+\begin{table}[H]
+    \centering
+  \begin{tabular}{|l|c|c|c|c|c|}
+    \hline
+    Role & Sah \textit{da(qany)} & Hun \textit{is/sem} & BCS \textit{i/ni} & Heb \textit{kol} & Jpn \textit{-mo} \\\hline\hline 
+    everyone, $\forall$ & \xmark \cellcolor{gray!25} & \xmark\cellcolor{gray!25} & \xmark\cellcolor{gray!25} & \checkmark & \checkmark\\
+                        &  \cellcolor{gray!25}     &   \cellcolor{gray!25}      & \cellcolor{gray!25}    &  (\textbf{kul}-am) & (dar\'{e}-\textbf{mo})\\\hline 
+
+    anyone, FCI & \xmark\cellcolor{gray!25} & \checkmark & \xmark\cellcolor{gray!25} & \checkmark & \checkmark \\
+                & \cellcolor{gray!25}       &(ak\'{a}r-ki \textbf{is})      & \cellcolor{gray!25}       & (\textbf{kol}-exad) & (dare-de-\textbf{mo})\\\hline 
+    anyone, NPI & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+                & (kim \textbf{da(qany)}) & (vala-ki \textbf{is}/ & (\textbf{i}-(t)ko) & (\textbf{kol}-exad) & (dare-\textbf{mo}) \\
+                &  & ak\'{a}r-ki \textbf{is} ) & &&\\\hline \hline 
+    both X and Y & \checkmark & \checkmark & \checkmark & \xmark\cellcolor{gray!25}& \checkmark \\
+                 & (X \textbf{da(qany)}   & (X \textbf{is} Y \textbf{is}) & (\textbf{i} X \textbf{i} Y) & \cellcolor{gray!25} & (Y-\textbf{mo} Y-\textbf{mo})  \\
+                & Y \textbf{da(qany)})  & & & \cellcolor{gray!25}& \\\hline 
+    neither X nor Y & \checkmark & \checkmark & \checkmark &\xmark\cellcolor{gray!25}  &\checkmark \\
+                    &  (X \textbf{da(qany)} & (\textbf{sem} X \textbf{sem} Y/ & (\textbf{ni} X \textbf{ni} Y) & \cellcolor{gray!25} & (X-\textbf{mo} Y-\textbf{mo}) \\
+                    & Y \textbf{da(qany)}) & X \textbf{sem} Y \textbf{sem}) &  & \cellcolor{gray!25} & \\\hline \hline 
+    X too & \xmark\cellcolor{gray!25} & \checkmark & \checkmark & \xmark\cellcolor{gray!25} & \checkmark \\
+          & \cellcolor{gray!25}       & (X \textbf{is}) & (\textbf{i} X) & \cellcolor{gray!25} & (X-\textbf{mo})  \\\hline 
+    even X & \checkmark & \checkmark & \checkmark &\xmark\cellcolor{gray!25}  &\checkmark \\
+            & ((onnooqor) X & (m\'{e}g X \textbf{is}) & (\v{c}ak \textbf{i} X) & \cellcolor{gray!25} & (X-\textbf{mo}) \\
+            & \textbf{da(qany)}) & &&\cellcolor{gray!25}& \\\hline 
+    \end{tabular}
+    \caption{A cool table}
+    \label{cool table}
+    \end{table}
+    
+
+
+\pagebreak
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{|l|p{2.3cm}l|p{2.3cm}|p{2.3cm}||p{.6cm}|p{.84cm}|p{.84cm}|p{.84cm}|}
+\hline 
+    & & & \multicolumn{2}{c||}{Sakha}  & Jpn & Hun & BCS & Hindi  \\
+    Category & \multicolumn{2}{l|}{Role} &  \textit{da(\textgamma an\textbari)} & \textit{em(i)e/ emit} & \textit{-mo} & \textit{is/sem} & \textit{i/ni} & \textit{bhii}\\\hline\hline 
+   \multirow{10}{*}{QNPs} & \multicolumn{2}{l|}{$\forall$-GQ, `everybody'} & \xmark\cellcolor{gray!25} & \xmark\cellcolor{gray!25} & \checkmark & \xmark\cellcolor{gray!25} & \xmark\cellcolor{gray!25} & \xmark\cellcolor{gray!25} \\\cline{2-9}
+    & \multicolumn{2}{l|}{NPI, `anybody'} & \checkmark & \xmark \cellcolor{gray!25} & \checkmark & \checkmark & \checkmark & \checkmark\\
+    & & & \textit{kim \textbf{da}}, \textit{biir \textbf{da} kihi} &\cellcolor{gray!25}  & & & &  \\ \cline{3-9}
+    %&\cellcolor{gray!25} & \multicolumn{1}{|l|}{\textbf{Environment}} &  & & & & & \\\cdashline{2-9}
+    & \multirow{6}{*}{(Environment)} & \multicolumn{1}{|l|}{Direct Neg} & \checkmark &  & \checkmark & \checkmark (\textit{sem}) & \checkmark (\textit{ni}) & \checkmark\\
+    & & \multicolumn{1}{|l|}{Indirect Neg} & maybe? &  & \xmark\cellcolor{gray!25} & \checkmark (\textit{is}) & \checkmark \textit{(i)} & \\
+    & & \multicolumn{1}{|l|}{Comparative} & \checkmark &  & \xmark\cellcolor{gray!25} & \xmark\cellcolor{gray!25} & \checkmark & \\
+    & & \multicolumn{1}{|l|}{Conditional} & \xmark\cellcolor{gray!25} & \checkmark & \xmark\cellcolor{gray!25} & \checkmark & \checkmark & \checkmark  \\
+    & & \multicolumn{1}{|l|}{Polar Question} & \xmark\cellcolor{gray!25} & \checkmark & \xmark\cellcolor{gray!25} & \checkmark & \checkmark &\checkmark \\
+    & & \multicolumn{1}{|l|}{Restrictor of $\forall$} &  \xmark\cellcolor{gray!25} & & & & & \checkmark \\\cline{2-9}
+    & \multicolumn{2}{l|}{FCI, `anybody'}  & \xmark \cellcolor{gray!25} & \checkmark  &\checkmark & \checkmark & \xmark \cellcolor{gray!25} & \checkmark \\\hline
+   \multirow{4}{*}{Focus} & \multicolumn{2}{l|}{Additive, `X too/also/either'}  & \xmark \cellcolor{red!25} & \checkmark \cellcolor{cyan!25} & \checkmark & \checkmark & \checkmark & \checkmark\\
+    & & & \cellcolor{red!25} & X \textbf{\textit{emie}}, \textit{\textbf{emie}} X \cellcolor{cyan!25} & & & & \\\cline{2-9}
+    & \multicolumn{2}{l|}{Scalar, `even X'}  & \checkmark & \xmark \cellcolor{gray!25} & \checkmark & \checkmark & \checkmark & \checkmark \\
+    & & & \textit{Onnoo\textgamma or} X \textbf{\textit{da}} & \xmark\cellcolor{gray!25} & & & & \\\hline 
+    \multirow{4}{*}{Coord.}& \multicolumn{2}{l|}{`Both X and Y'}   & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark\\
+    & & & X \textit{\textbf{da}} Y \textbf{\textit{da}} Y & \textit{\textbf{emie da}} X \textit{\textbf{emie da}} Y & & & & \\\cline{2-9}
+    & \multicolumn{2}{l|}{`Neither X nor Y'}  & \checkmark &  & \checkmark & \checkmark & \checkmark & \\
+    & & & X \textit{\textbf{da}} Y \textit{\textbf{da}} (w/ \textsc{neg}) & & & & & \\\hline 
+\end{tabular}
+    \caption{Another cool table}
+    \label{cool table 2}
+\end{table}
+
+
+
+
+% \section{Complex \textit{tikz} figures}
+
+
+% \ex.\label{beautiful figure}Morpho-phonological history of \textit{whether, either, neither}, and \textit{outher}\\\\
+% \leavevmode\vadjust{\vspace{-\baselineskip}}\newline
+% \begin{tikzpicture}
+% \node(label OE) at (-5.5,4) {OE};
+% \node(hwaether) at (0,4) {hw\ae$\eth$er};
+% \node(aghwaether) at (-3.5,2) {\ae ghw\ae$\eth$er};
+%     \draw[semithick,->](hwaether.south) to (aghwaether.north);
+% \node(naghwaether) at (-.5,2) {*n\ae ghw\ae$\eth$er};
+%     \draw[semithick,dashed,->] (aghwaether.east) to (naghwaether.west);
+% \node(label contr) at (-5.5,1) {\textit{contracted:}} ;
+% \node(agther) at (-3.5,1) {\ae g$\eth$er};
+%     \draw[semithick,->] (aghwaether.south) to (agther.north);
+% \node(label ME) at (-5.5,-.5) {ME};
+% \node(eitherME) at (-3.5,-.5) {ei\textthorn er};
+%     \draw[semithick->] (agther.south) to (eitherME.north);
+% \node(neitherME) at (-.5,-.5) {nei\textthorn er};
+%     \draw[semithick,dashed,->] (naghwaether.south) to (neitherME.north);
+%     \draw[semithick,->] (eitherME.east) to (neitherME.west);
+% \node(label EMoE) at (-5.5,-2.5) {MoE};
+% \node(eitherMoE) at (-3.5,-2.5) {either};
+%     \draw[semithick,->] (eitherME.south) to (eitherMoE.north);
+% \node(neitherMoE) at (-.5,-2.5) {neither};
+%     \draw[semithick,->] (neitherME.south) to (neitherMoE.north);
+% \node(outherOE) at (3,2) {ahw\ae$\eth$er};
+%     \draw[semithick,->] (hwaether.south) to (outherOE.north);
+% \node(noutherOE) at (5.5,2) {nahw\ae$\eth$er};
+%     \draw[semithick,->] (outherOE.east) to (noutherOE.west);
+% \node(awther) at (3,1) {aw$\eth$er};
+%     \draw[semithick,->] (outherOE.south) to (awther.north);
+% \node(outherME) at (3,-.5) {ou\textthorn er};
+%     \draw[semithick,->] (awther.south) to (outherME.north);
+% \node(outherMoE) at (3,-2.5) {outher};
+%     \draw[semithick,->] (outherME.south) to (outherMoE.north);
+% \node(nowther) at (5.5,1) {naw$\eth$er};
+%     \draw[semithick,->] (noutherOE.south) to (nowther.north);
+% \node(noutherME) at (5.5,-.5) {nou$\eth$er};
+%     \draw[semithick,->] (nowther.south) to (noutherME.north);
+% \node(noutherMoE) at (5.5,-2.5) {nouther};
+%     \draw[semithick,->] (noutherME.south) to (noutherMoE.north);
+% \node(label Moe) at (-5.5,-4.5) {PDE};
+% \node(either) at (-3.5,-4.5) {either};
+%     \draw[semithick,->] (eitherMoE.south) to (either.north);
+% \node(neitherPDE) at (-.5,-4.5) {neither};
+%     \draw[semithick,->] (neitherMoE.south) to (neitherPDE.north);
+% \node(outherPDE) at (3,-4.5) {$^{\%}$outher};
+%     \draw[semithick,->] (outherMoE.south) to (outherPDE.north);
+% \node(nor) at (5.5,-4.5) {nor};
+%     \draw[semithick,->] (noutherMoE.south) to (nor.north);
+% \node(help) at (7.25,2) {};
+%     \draw[semithick,-] (hwaether.south) to [bend left=5] (help.south);
+% \node(hwether) at (7.25,-.5) {hwe\textthorn er};
+%     \draw[semithick,->] (help) to (hwether.north);
+% \node(whetherMoE) at (7.25,-2.5) {whether};
+%     \draw[semithick,->] (hwether.south) to (whetherMoE.north);
+% \node(whetherPDE) at (7.25,-4.5) {whether};
+%     \draw[semithick,->] (whetherMoE.south) to (whetherPDE.north);
+% %\draw[helplines] (-6,-6) grid (6,6)
+% \end{tikzpicture}
+
+% \ex.\label{beautiful figure gridlines}\\\\
+% \leavevmode\vadjust{\vspace{-\baselineskip}}\newline
+% \begin{tikzpicture}
+% \node(label OE) at (-5.5,4) {OE};
+% \node(hwaether) at (0,4) {hw\ae$\eth$er};
+% \node(aghwaether) at (-3.5,2) {\ae ghw\ae$\eth$er};
+%     \draw[semithick,->](hwaether.south) to (aghwaether.north);
+% \node(naghwaether) at (-.5,2) {*n\ae ghw\ae$\eth$er};
+%     \draw[semithick,dashed,->] (aghwaether.east) to (naghwaether.west);
+% \node(label contr) at (-5.5,1) {\textit{contracted:}} ;
+% \node(agther) at (-3.5,1) {\ae g$\eth$er};
+%     \draw[semithick,->] (aghwaether.south) to (agther.north);
+% \node(label ME) at (-5.5,-.5) {ME};
+% \node(eitherME) at (-3.5,-.5) {ei\textthorn er};
+%     \draw[semithick->] (agther.south) to (eitherME.north);
+% \node(neitherME) at (-.5,-.5) {nei\textthorn er};
+%     \draw[semithick,dashed,->] (naghwaether.south) to (neitherME.north);
+%     \draw[semithick,->] (eitherME.east) to (neitherME.west);
+% \node(label EMoE) at (-5.5,-2.5) {MoE};
+% \node(eitherMoE) at (-3.5,-2.5) {either};
+%     \draw[semithick,->] (eitherME.south) to (eitherMoE.north);
+% \node(neitherMoE) at (-.5,-2.5) {neither};
+%     \draw[semithick,->] (neitherME.south) to (neitherMoE.north);
+% \node(outherOE) at (3,2) {ahw\ae$\eth$er};
+%     \draw[semithick,->] (hwaether.south) to (outherOE.north);
+% \node(noutherOE) at (5.5,2) {nahw\ae$\eth$er};
+%     \draw[semithick,->] (outherOE.east) to (noutherOE.west);
+% \node(awther) at (3,1) {aw$\eth$er};
+%     \draw[semithick,->] (outherOE.south) to (awther.north);
+% \node(outherME) at (3,-.5) {ou\textthorn er};
+%     \draw[semithick,->] (awther.south) to (outherME.north);
+% \node(outherMoE) at (3,-2.5) {outher};
+%     \draw[semithick,->] (outherME.south) to (outherMoE.north);
+% \node(nowther) at (5.5,1) {naw$\eth$er};
+%     \draw[semithick,->] (noutherOE.south) to (nowther.north);
+% \node(noutherME) at (5.5,-.5) {nou$\eth$er};
+%     \draw[semithick,->] (nowther.south) to (noutherME.north);
+% \node(noutherMoE) at (5.5,-2.5) {nouther};
+%     \draw[semithick,->] (noutherME.south) to (noutherMoE.north);
+% \node(label Moe) at (-5.5,-4.5) {PDE};
+% \node(either) at (-3.5,-4.5) {either};
+%     \draw[semithick,->] (eitherMoE.south) to (either.north);
+% \node(neitherPDE) at (-.5,-4.5) {neither};
+%     \draw[semithick,->] (neitherMoE.south) to (neitherPDE.north);
+% \node(outherPDE) at (3,-4.5) {outher};
+%     \draw[semithick,->] (outherMoE.south) to (outherPDE.north);
+% \node(nor) at (5.5,-4.5) {nor};
+%     \draw[semithick,->] (noutherMoE.south) to (nor.north);
+% \node(help) at (7.25,2) {};
+%     \draw[semithick,-] (hwaether.south) to [bend left=5] (help.south);
+% \node(hwether) at (7.25,-.5) {hwe\textthorn er};
+%     \draw[semithick,->] (help) to (hwether.north);
+% \node(whetherMoE) at (7.25,-2.5) {whether};
+%     \draw[semithick,->] (hwether.south) to (whetherMoE.north);
+% \node(whetherPDE) at (7.25,-4.5) {whether};
+%     \draw[semithick,->] (whetherMoE.south) to (whetherPDE.north);
+% \draw[helplines] (-6,-6) grid (6,6)
+% \end{tikzpicture}
+
+
+
+\end{document}
