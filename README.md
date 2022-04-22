@@ -1,29 +1,47 @@
 # LaTeX for Linguists
 
-This is a repository for linguistics-related LaTeX resources.  It is intended to serve the needs of people in the Harvard Linguistics community, but the resources are useful for basically any linguist.
+This is a repository for linguistics-related LaTeX resources.  It is intended to serve the needs of people in the Harvard Linguistics community, but the resources are useful for basically any linguist.  If you're not sure about learning LaTeX as you're quite comfortable with your word processor, consider this:
+
+* I want to cite an example in a three-line gloss.  I have a big list of my references with a label for each.  I type what I can remember of the label in and...
+    1. A helpful window appears. <br>![](/ExampleFiles/Images/topCodeMenu.png)
+    1. I select it. <br> ![](/ExampleFiles/Images/topCode.png)
+    1. It adds that entry to my list of references.  In in-document hyperlinks have their appropriate numbering:<br>![](/ExampleFiles/Images/topSentence.png)
+
+
 
 <!-- [Examples of essential functions](/ExampleFiles/exampleFiles.md) -->
 
-# Learning LaTeX
+## Learning LaTeX
 
-* [Wikibook for latex for linguists](https://en.wikibooks.org/wiki/LaTeX/Linguistics) - good resources, but some of the packages are a bit outdated.
-* [Overleaf](https://www.overleaf.com/) is a great website for writing and compiling in LaTeX.  While it does only run through a browser (and thus requires internet connection), it is extremely convenient for sharing documents and provides essentially all the functionality of any other options.
-    * There is also [LyX](https://www.lyx.org/), which allows you generate TeX documents in an environment more like a word processor.
-* If you code is giving errors and not compiling, try commenting parts out with ```%```.  On Overleaf, you can comment out an entire row by pressing ```CTRL```+ ```/``` (```COMMAND``` + ```/ ``` on Mac).
-* Be in the practice of consulting a package's documentation if you're running into problems with it, though some documentation is a bit obtuse.  Stackexchange and Stackoverflow are often great places to find answers to very particular questions about things you may want to do.
+
+* [Overleaf](https://www.overleaf.com/) is a great website for writing and compiling in LaTeX.  It runs through youer browser and is extremely convenient for sharing documents and provides essentially all the functionality of any other options.
+    * Overleaf has a lot of [really great guides](https://www.overleaf.com/learn), most of which provide templates.
+        * [Font guide](https://www.overleaf.com/learn/latex/Font_typefaces)
+        * [Beamer guide](https://www.overleaf.com/learn/latex/Beamer)
+        * [Table guide](https://www.overleaf.com/learn/latex/Tables)
+        * [TikZ guide](https://www.overleaf.com/learn/latex/TikZ_package)
+* There is also [LyX](https://www.lyx.org/), which allows you to generate TeX documents in an environment more like a word processor.
+* If your code is giving errors and not compiling, try commenting parts out with ```%```.  On Overleaf, you can comment out an entire row by pressing ```CTRL```+ ```/``` (```COMMAND``` + ```/ ``` on Mac).
+* Be in the practice of consulting a package's documentation if you're running into problems with it, though some documentation is a bit obtuse.  Stackexchange and Stackoverflow are often great places to find answers to very particular questions about things you may want to do (which are often the top search results anyway).
+    * Note that very often the solution that some people give is: "Why are you using that package?  Use this better one."  Sometimes this is somethign to consider (if a package is finnicky while an alternative is much more stable), but others this is just personal taste.  It can often be a huge time sink to have to learn new packages.
 * If you're not comfortable reading LaTeX code (or just dislike it on aesthetic bases), Overleaf has a Rich Text mode that automatically renders some of your code into more readable text.  It also has windows
     * Source code:<br><center><img src="ExampleFiles/Images/source.png" style="width:90%;height:90%"/></center>
     * Rich text:<br><center><img src="ExampleFiles/Images/richText.png" style="width:90%;height:90%"/></center>
 
 
-# Very useful tools and things
+## Useful tools and resources
 
-* [Table generator](https://www.tablesgenerator.com/) - Generates latex code for excel-style tables.
+* [Table generator](https://www.tablesgenerator.com/) - Generates latex code for excel-style tables (easy to copy and paste from Excel).
 * [comphrehensive latex symbols list](http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf)
-* [detexify](https://detexify.kirelabs.org/classify.html) - You draw the symbol and it tells you which package you can get it in, and its command.
-* [Kevin's OT table generator](https://meluhha.com/tabular/)
+* **[detexify](https://detexify.kirelabs.org/classify.html) - You draw the symbol and it tells you which package you can get it in, and its command.**
+* Our very own Kevin Ryan has designed some really useful resources including:
+    * [OT table generator](https://meluhha.com/tableau/)
+    * [Table generator](https://meluhha.com/tabular/)
+    * [IPA typewrite](https://ling.meluhha.com/ipatypewriter/)
 * [tipa codes](https://jon.dehdari.org/tutorials/tipachart_mod.pdf) - Most of the codes for the IPA package ```tipa``` that you can invoke in ```\textipa{}```.
 * [Semantics and Pragmatics stylesheet for reference](/ExampleFiles/BibliographyStylesheets/spbasic.bst) - works for ```natbib``` (possibly ```bibtex```?)
+* [Wikibook for latex for linguists](https://en.wikibooks.org/wiki/LaTeX/Linguistics) - good resources, but some of the packages are a bit outdated.
+
 
 # Sample Files
 
@@ -265,6 +283,10 @@ Other examples:
 ### IPA
 
 ```\usepackage{tipa}``` is the gold standard for typing IPA ([tipa code table](https://jon.dehdari.org/tutorials/tipachart_mod.pdf))
+
+### SPE style rules
+
+```\usepackage{phonr}``` ([documentation]https://cran.r-project.org/web/packages/phonR/phonR.pdf))
 
 
 ## Semantics 
