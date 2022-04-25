@@ -56,7 +56,7 @@ This is a repository for linguistics-related LaTeX resources.  It is intended to
 
 ## Sample handouts
 
-* Ross, Hayley. Handout 10 function application [[PDF](/ExampleFiles/Handout%2010-Function%20Application-FilledOut.tex), [TeX](/ExampleFiles/Handout%2010-Function%20Application-FilledOut.tex)]
+* Sağ, Yağmur. Handout 10 function application [[PDF](/ExampleFiles/Handout%2010-Function%20Application-FilledOut.tex), [TeX](/ExampleFiles/Handout%2010-Function%20Application-FilledOut.tex)]
 
 
 ## Posters
